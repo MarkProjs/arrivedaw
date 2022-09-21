@@ -4,4 +4,5 @@
     <string name="app_description">For your (and everyone\'s) security, we require every person entering the college to fill out the form at least the day before.\nYou will be able to generate your secure QR code, showing it to the security office will grant you access tot he college building.\nWith this information we will be able to notify the right people in the case of a Covid case</string>
     <string name="unspecified">Also, we\'ll make loads of cash with your data</string>
     <string name="fillForm">Every field is required, please fill them before generating your QR code</string>
+    <string name="question1">What best describes you or your primary reason for entering Dawson?</string>
 </resources>
