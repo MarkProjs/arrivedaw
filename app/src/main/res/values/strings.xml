@@ -5,4 +5,9 @@
     <string name="unspecified">Also, we\'ll make loads of cash with your data</string>
     <string name="fillForm">Every field is required, please fill them before generating your QR code</string>
     <string name="question1">What best describes you or your primary reason for entering Dawson?</string>
+    <string name="Registered_student">Registered Dawson student</string>
+    <string name="Work">Work/employment or essential reasons</string>
+    <string name="visit_friend">Visiting a friend</string>
+    <string name="visit_college">Visit the college(future student)</string>
+    <string name="other">Other</string>
 </resources>
