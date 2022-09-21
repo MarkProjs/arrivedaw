@@ -7,7 +7,7 @@
     tools:context=".MainActivity">
 
 
-<!--    <ImageView-->
+    <!--    <ImageView-->
 <!--        android:id="@+id/QR_result"-->
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="match_parent"-->
@@ -21,6 +21,20 @@
 <!--        app:layout_constraintTop_toTopOf="parent"-->
 <!--        app:layout_constraintVertical_bias="1.0" />-->
 
+
+    <ImageView
+        android:id="@+id/QR_result"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:adjustViewBounds="true"
+        android:background="#FFFFFF"
+        android:contentDescription="@string/qr_code_img_description"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/app_description_id"
@@ -72,15 +86,64 @@
         android:id="@+id/icon_education_hat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:importantForAccessibility="no"
-        app:srcCompat="@drawable/ic_baseline_school_24"
-        tools:layout_editor_absoluteX="10dp"
-        tools:layout_editor_absoluteY="285dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/reason_question"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/reason_question"
+        app:srcCompat="@drawable/ic_baseline_school_24" />
 
     <TextView
         android:id="@+id/reason_question"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="104dp"
-        tools:layout_editor_absoluteY="356dp" />
+        android:layout_width="332dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="13dp"
+        android:text="@string/question1"
+        app:layout_constraintStart_toEndOf="@id/icon_education_hat"
+        app:layout_constraintTop_toBottomOf="@+id/fillForm_id" />
+
+    <RadioGroup
+        android:layout_width="361dp"
+        android:layout_height="223dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/reason_question"
+        tools:layout_editor_absoluteX="44dp">
+
+        <RadioButton
+            android:id="@+id/Registered"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onRadioButtonClicked"
+            android:text="@string/Registered_student" />
+
+        <RadioButton
+            android:id="@+id/Work"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onRadioButtonClicked"
+            android:text="@string/Work" />
+
+        <RadioButton
+            android:id="@+id/friend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onRadioButtonClicked"
+            android:text="@string/visit_friend" />
+
+        <RadioButton
+            android:id="@+id/college"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onRadioButtonClicked"
+            android:text="@string/visit_college" />
+
+        <RadioButton
+            android:id="@+id/other"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onRadioButtonClicked"
+            android:text="@string/other" />
+    </RadioGroup>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
