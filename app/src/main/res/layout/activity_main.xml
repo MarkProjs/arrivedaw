@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-
     <!--    <ImageView-->
 <!--        android:id="@+id/QR_result"-->
 <!--        android:layout_width="match_parent"-->
@@ -22,65 +21,47 @@
 <!--        app:layout_constraintVertical_bias="1.0" />-->
 
 
-    <ImageView
-        android:id="@+id/QR_result"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:adjustViewBounds="true"
-        android:background="#FFFFFF"
-        android:contentDescription="@string/qr_code_img_description"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
     <TextView
         android:id="@+id/app_description_id"
-        android:layout_width="389dp"
-        android:layout_height="92dp"
-        android:layout_marginEnd="8dp"
+        android:layout_width="366dp"
+        android:layout_height="125dp"
+        android:layout_marginEnd="12dp"
         android:text="@string/app_description"
         android:textColor="#808080"
         android:textSize="13sp"
         android:textStyle="normal"
-        app:layout_constraintBottom_toBottomOf="@+id/unspecified_id"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.642"
+        app:layout_constraintHorizontal_bias="0.571"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.212" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/unspecified_id"
-        android:layout_width="364dp"
-        android:layout_height="26dp"
+        android:layout_width="365dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="8dp"
         android:text="@string/unspecified"
         android:textColor="#808080"
         android:textSize="11sp"
         android:textStyle="normal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/app_description_id"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/app_description_id"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.151" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.296"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/app_description_id" />
 
     <TextView
         android:id="@+id/fillForm_id"
-        android:layout_width="371dp"
-        android:layout_height="36dp"
+        android:layout_width="362dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="4dp"
         android:text="@string/fillForm"
         android:textColor="#808080"
         android:textSize="13sp"
         android:textStyle="normal"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/app_description_id"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.201" />
+        app:layout_constraintHorizontal_bias="0.225"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/unspecified_id" />
 
     <ImageView
         android:id="@+id/icon_education_hat"
@@ -104,11 +85,14 @@
         app:layout_constraintTop_toBottomOf="@+id/fillForm_id" />
 
     <RadioGroup
-        android:layout_width="361dp"
-        android:layout_height="223dp"
+        android:id="@+id/first_question_radio"
+        android:layout_width="289dp"
+        android:layout_height="247dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="8dp"
         android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@+id/reason_question"
-        tools:layout_editor_absoluteX="44dp">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/reason_question">
 
         <RadioButton
             android:id="@+id/Registered"
@@ -140,10 +124,63 @@
 
         <RadioButton
             android:id="@+id/other"
-            android:layout_width="wrap_content"
+            android:layout_width="92dp"
             android:layout_height="wrap_content"
             android:onClick="onRadioButtonClicked"
             android:text="@string/other" />
+    </RadioGroup>
+
+    <ImageView
+        android:id="@+id/icon_sign_post"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:importantForAccessibility="no"
+        app:layout_constraintBottom_toBottomOf="@+id/entrance_question"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/entrance_question"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/ic_baseline_signpost_24" />
+
+    <TextView
+        android:id="@+id/entrance_question"
+        android:layout_width="321dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="52dp"
+        android:text="@string/question2"
+        app:layout_constraintStart_toEndOf="@id/icon_sign_post"
+        app:layout_constraintTop_toBottomOf="@id/first_question_radio" />
+
+    <RadioGroup
+        android:id="@+id/second_question_radio"
+        android:layout_width="209dp"
+        android:layout_height="146dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/entrance_question">
+
+        <RadioButton
+            android:id="@+id/entry_by_metro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onRadioButtonClicked"
+            android:text="Entry by metro" />
+
+        <RadioButton
+            android:id="@+id/entry_by_land"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onRadioButtonClicked"
+            android:text="Entry by land (the doors)" />
+
+        <RadioButton
+            android:id="@+id/entry_by_window"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onRadioButtonClicked"
+            android:text="Entry by window" />
     </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
