@@ -18,8 +18,8 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val qrTestString = "Hello this is a test string! It will be used to generate a QR code"
-        binding.QRResult.setImageBitmap(encodeStringToBitmap(qrTestString))
+//        val qrTestString = "Hello this is a test string! It will be used to generate a QR code"
+//        binding.QRResult.setImageBitmap(encodeStringToBitmap(qrTestString))
     }
 
     @Throws(WriterException::class)
