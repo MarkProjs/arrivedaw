@@ -226,7 +226,6 @@
                         android:text="Entry by window" />
                 </RadioGroup>
             </LinearLayout>
-
             <LinearLayout
                 android:id="@+id/third_question_layout"
                 android:layout_width="wrap_content"
@@ -258,5 +257,5 @@
         </LinearLayout>
     </ScrollView>
 
-
 </androidx.constraintlayout.widget.ConstraintLayout>
+
