@@ -227,12 +227,33 @@
                 </RadioGroup>
             </LinearLayout>
             <LinearLayout
-                android:id="@+id/subform_metro"
+                android:id="@+id/subforms"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
-                
+                <LinearLayout
+                    android:id="@+id/subform_metro"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/subform_doors"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/subform_window"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                </LinearLayout>
+
             </LinearLayout>
 
             <LinearLayout
