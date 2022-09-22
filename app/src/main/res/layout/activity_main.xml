@@ -226,7 +226,14 @@
                         android:text="Entry by window" />
                 </RadioGroup>
             </LinearLayout>
-            
+            <LinearLayout
+                android:id="@+id/subform_metro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/third_question_layout"
