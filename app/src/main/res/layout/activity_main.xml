@@ -225,7 +225,7 @@
                         android:text="Entry by window" />
                 </RadioGroup>
             </LinearLayout>
-            <LinearLayout
+            <RelativeLayout
                 android:id="@+id/main_subform_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -235,7 +235,9 @@
                     android:id="@+id/subform_metro"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    tools:visibility="visible">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -359,7 +361,8 @@
                     android:id="@+id/subform_doors"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:visibility="gone">
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -417,7 +420,8 @@
                     android:id="@+id/subform_window"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:visibility="gone">
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -499,7 +503,7 @@
                     </LinearLayout>
 
                 </LinearLayout>
-            </LinearLayout>
+            </RelativeLayout>
             <LinearLayout
                 android:id="@+id/third_question_layout"
                 android:layout_width="wrap_content"
