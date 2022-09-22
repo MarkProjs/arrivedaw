@@ -21,14 +21,12 @@
     <!--        app:layout_constraintVertical_bias="1.0" />-->
     <ScrollView
         android:id="@+id/root_layout"
-        android:layout_width="411dp"
-        android:layout_height="734dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.666">
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:id="@+id/main_linear"
@@ -45,6 +43,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+
                 <TextView
                     android:id="@+id/app_description_id"
                     android:layout_width="366dp"
@@ -59,6 +58,7 @@
                     app:layout_constraintHorizontal_bias="0.484"
                     app:layout_constraintStart_toStartOf="@id/desc_layout"
                     app:layout_constraintTop_toTopOf="@id/desc_layout" />
+
                 <TextView
                     android:id="@+id/unspecified_id"
                     android:layout_width="365dp"
@@ -68,8 +68,8 @@
                     android:textColor="#808080"
                     android:textSize="11sp"
                     android:textStyle="normal"
-                    app:layout_constraintStart_toStartOf="@id/desc_layout"
-                    />
+                    app:layout_constraintStart_toStartOf="@id/desc_layout" />
+
                 <TextView
                     android:id="@+id/fillForm_id"
                     android:layout_width="362dp"
@@ -103,8 +103,8 @@
                         android:id="@+id/icon_education_hat"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="17dp"
                         android:layout_marginStart="8dp"
+                        android:layout_marginTop="17dp"
                         android:importantForAccessibility="no"
                         app:srcCompat="@drawable/ic_baseline_school_24" />
 
@@ -164,23 +164,26 @@
                         android:text="@string/other" />
                 </RadioGroup>
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/second_question_layout"
-                android:orientation="vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="30dp">
+                android:layout_marginBottom="30dp"
+                android:orientation="vertical">
+
                 <LinearLayout
                     android:id="@+id/question2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
+
                     <ImageView
                         android:id="@+id/icon_sign_post"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="17dp"
                         android:importantForAccessibility="no"
-                        app:srcCompat="@drawable/ic_baseline_signpost_24"/>
+                        app:srcCompat="@drawable/ic_baseline_signpost_24" />
 
                     <TextView
                         android:id="@+id/entrance_question"
@@ -250,8 +253,8 @@
                     android:id="@+id/student_number"
                     android:layout_width="210dp"
                     android:layout_height="wrap_content"
-                    android:inputType="text"
-                    android:layout_marginStart="12dp"/>
+                    android:layout_marginStart="12dp"
+                    android:inputType="text" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
