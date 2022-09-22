@@ -36,8 +36,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:orientation="vertical"
-            app:layout_constraintEnd_toEndof="@id/root_layout"
-            app:layout_constraintStart_toStartof="@id/root_layout"
+            app:layout_constraintEnd_toEndOf="@id/root_layout"
+            app:layout_constraintStart_toStartOf="@id/root_layout"
             app:layout_constraintTop_toTopOf="@id/root_layout">
 
             <LinearLayout
@@ -168,7 +168,8 @@
                 android:id="@+id/second_question_layout"
                 android:orientation="vertical"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp">
                 <LinearLayout
                     android:id="@+id/question2"
                     android:layout_width="wrap_content"
@@ -193,12 +194,12 @@
 
                 <RadioGroup
                     android:id="@+id/second_question_radio"
-                    android:layout_width="209dp"
-                    android:layout_height="146dp"
+                    android:layout_width="204dp"
+                    android:layout_height="123dp"
                     android:layout_marginStart="48dp"
                     android:layout_marginTop="4dp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/entrance_question">
+                    app:layout_constraintTop_toBottomOf="@id/second_question_layout">
 
                     <RadioButton
                         android:id="@+id/entry_by_metro"
@@ -221,9 +222,36 @@
                         android:onClick="onRadioButtonClicked"
                         android:text="Entry by window" />
                 </RadioGroup>
-
             </LinearLayout>
-            
+
+            <LinearLayout
+                android:id="@+id/third_question_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@id/second_question_layout">
+
+                <ImageView
+                    android:id="@+id/icon_number_sign"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="17dp"
+                    android:importantForAccessibility="no"
+                    app:srcCompat="@drawable/ic_baseline_numbers_24" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:layout_marginStart="12dp"
+                    android:text="@string/question3" />
+
+                <EditText
+                    android:id="@+id/student_number"
+                    android:layout_width="210dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:layout_marginStart="12dp"/>
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 
