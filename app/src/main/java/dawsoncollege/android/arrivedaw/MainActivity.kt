@@ -3,6 +3,8 @@ package dawsoncollege.android.arrivedaw
 import android.graphics.Bitmap
 import android.graphics.Color
 import android.os.Bundle
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 import androidx.appcompat.app.AppCompatActivity
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.WriterException
@@ -20,6 +22,15 @@ class MainActivity : AppCompatActivity() {
 
 //        val qrTestString = "Hello this is a test string! It will be used to generate a QR code"
 //        binding.QRResult.setImageBitmap(encodeStringToBitmap(qrTestString))
+
+
+        //setting up the dawson wing dropdown menu
+        val dawsonWings = resources.getStringArray(R.array.dawson_wings)
+        val dawsonWingsSpinner = findViewById<Spinner>(R.id.dawson_wings)
+        if (dawsonWingsSpinner != null) {
+            val dawsonWingsAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, dawsonWings)
+            dawsonWingsSpinner.adapter = dawsonWingsAdapter;
+        }
     }
 
     @Throws(WriterException::class)

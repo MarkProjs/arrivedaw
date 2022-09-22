@@ -13,4 +13,14 @@
     <string name="question2">How are you entering into Dawson?</string>
     <string name="question3">Student number</string>
     <string name="generate">Generate QR</string>
+    <string-array name="dawson_wings">
+        <item>A</item>
+        <item>B</item>
+        <item>C</item>
+        <item>D</item>
+        <item>E</item>
+        <item>F</item>
+        <item>G</item>
+        <item>H</item>
+    </string-array>
 </resources>
