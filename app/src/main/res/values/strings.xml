@@ -13,4 +13,11 @@
     <string name="question2">How are you entering into Dawson?</string>
     <string name="question3">Student number</string>
     <string name="generate">Generate QR</string>
+    <string name="starting_metro">Starting metro line</string>
+    <string-array name="metro_lines">
+        <item>Yellow</item>
+        <item>Green</item>
+        <item>Orange</item>
+        <item>Blue</item>
+    </string-array>
 </resources>

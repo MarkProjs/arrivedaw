@@ -3,6 +3,8 @@ package dawsoncollege.android.arrivedaw
 import android.graphics.Bitmap
 import android.graphics.Color
 import android.os.Bundle
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 import androidx.appcompat.app.AppCompatActivity
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.WriterException
@@ -20,6 +22,14 @@ class MainActivity : AppCompatActivity() {
 
 //        val qrTestString = "Hello this is a test string! It will be used to generate a QR code"
 //        binding.QRResult.setImageBitmap(encodeStringToBitmap(qrTestString))
+
+        //setting up metro spinner
+        val metroLine = resources.getStringArray(R.array.metro_lines)
+        val metroLineSpinner = findViewById<Spinner>(R.id.metro_spinner)
+        if (metroLineSpinner != null) {
+            val metroLineAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, metroLine)
+            metroLineSpinner.adapter = metroLineAdapter
+        }
     }
 
     @Throws(WriterException::class)
