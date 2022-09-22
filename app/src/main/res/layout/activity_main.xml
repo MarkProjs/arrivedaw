@@ -19,169 +19,213 @@
 <!--        app:layout_constraintStart_toStartOf="parent"-->
 <!--        app:layout_constraintTop_toTopOf="parent"-->
 <!--        app:layout_constraintVertical_bias="1.0" />-->
-
-
-    <TextView
-        android:id="@+id/app_description_id"
-        android:layout_width="366dp"
-        android:layout_height="125dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="12dp"
-        android:text="@string/app_description"
-        android:textColor="#808080"
-        android:textSize="13sp"
-        android:textStyle="normal"
+    <ScrollView
+        android:id="@+id/root_layout"
+        android:layout_width="411dp"
+        android:layout_height="734dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.484"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.666">
 
-    <TextView
-        android:id="@+id/unspecified_id"
-        android:layout_width="365dp"
-        android:layout_height="43dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/unspecified"
-        android:textColor="#808080"
-        android:textSize="11sp"
-        android:textStyle="normal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.296"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/app_description_id" />
-
-    <TextView
-        android:id="@+id/fillForm_id"
-        android:layout_width="362dp"
-        android:layout_height="62dp"
-        android:layout_marginTop="4dp"
-        android:text="@string/fillForm"
-        android:textColor="#808080"
-        android:textSize="13sp"
-        android:textStyle="normal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.285"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/unspecified_id" />
-
-    <ImageView
-        android:id="@+id/icon_education_hat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:importantForAccessibility="no"
-        app:layout_constraintBottom_toBottomOf="@+id/reason_question"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/reason_question"
-        app:srcCompat="@drawable/ic_baseline_school_24" />
-
-    <TextView
-        android:id="@+id/reason_question"
-        android:layout_width="332dp"
-        android:layout_height="37dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="13dp"
-        android:text="@string/question1"
-        app:layout_constraintStart_toEndOf="@id/icon_education_hat"
-        app:layout_constraintTop_toBottomOf="@+id/fillForm_id" />
-
-    <RadioGroup
-        android:id="@+id/first_question_radio"
-        android:layout_width="289dp"
-        android:layout_height="247dp"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="8dp"
-        android:orientation="vertical"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/reason_question">
-
-        <RadioButton
-            android:id="@+id/Registered"
+        <LinearLayout
+            android:id="@+id/main_linear"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="onRadioButtonClicked"
-            android:text="@string/Registered_student" />
+            android:layout_marginStart="12dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndof="@id/root_layout"
+            app:layout_constraintStart_toStartof="@id/root_layout"
+            app:layout_constraintTop_toTopOf="@id/root_layout">
 
-        <RadioButton
-            android:id="@+id/Work"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="onRadioButtonClicked"
-            android:text="@string/Work" />
+            <LinearLayout
+                android:id="@+id/desc_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/app_description_id"
+                    android:layout_width="366dp"
+                    android:layout_height="125dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="12dp"
+                    android:text="@string/app_description"
+                    android:textColor="#808080"
+                    android:textSize="13sp"
+                    android:textStyle="normal"
+                    app:layout_constraintEnd_toEndOf="@id/desc_layout"
+                    app:layout_constraintHorizontal_bias="0.484"
+                    app:layout_constraintStart_toStartOf="@id/desc_layout"
+                    app:layout_constraintTop_toTopOf="@id/desc_layout" />
+                <TextView
+                    android:id="@+id/unspecified_id"
+                    android:layout_width="365dp"
+                    android:layout_height="43dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/unspecified"
+                    android:textColor="#808080"
+                    android:textSize="11sp"
+                    android:textStyle="normal"
+                    app:layout_constraintStart_toStartOf="@id/desc_layout"
+                    />
+                <TextView
+                    android:id="@+id/fillForm_id"
+                    android:layout_width="362dp"
+                    android:layout_height="62dp"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/fillForm"
+                    android:textColor="#808080"
+                    android:textSize="13sp"
+                    android:textStyle="normal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.285"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/unspecified_id" />
+            </LinearLayout>
 
-        <RadioButton
-            android:id="@+id/friend"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="onRadioButtonClicked"
-            android:text="@string/visit_friend" />
 
-        <RadioButton
-            android:id="@+id/college"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="onRadioButtonClicked"
-            android:text="@string/visit_college" />
+            <LinearLayout
+                android:id="@+id/first_question_layout"
+                android:layout_width="match_parent"
+                android:layout_height="342dp"
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@id/desc_layout">
 
-        <RadioButton
-            android:id="@+id/other"
-            android:layout_width="92dp"
-            android:layout_height="wrap_content"
-            android:onClick="onRadioButtonClicked"
-            android:text="@string/other" />
-    </RadioGroup>
+                <LinearLayout
+                    android:id="@+id/question1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-    <ImageView
-        android:id="@+id/icon_sign_post"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:importantForAccessibility="no"
-        app:layout_constraintBottom_toBottomOf="@+id/entrance_question"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/entrance_question"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/ic_baseline_signpost_24" />
+                    <ImageView
+                        android:id="@+id/icon_education_hat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="17dp"
+                        android:layout_marginStart="8dp"
+                        android:importantForAccessibility="no"
+                        app:srcCompat="@drawable/ic_baseline_school_24" />
 
-    <TextView
-        android:id="@+id/entrance_question"
-        android:layout_width="321dp"
-        android:layout_height="36dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="52dp"
-        android:text="@string/question2"
-        app:layout_constraintStart_toEndOf="@id/icon_sign_post"
-        app:layout_constraintTop_toBottomOf="@id/first_question_radio" />
+                    <TextView
+                        android:id="@+id/reason_question"
+                        android:layout_width="332dp"
+                        android:layout_height="37dp"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginTop="13dp"
+                        android:text="@string/question1" />
 
-    <RadioGroup
-        android:id="@+id/second_question_radio"
-        android:layout_width="209dp"
-        android:layout_height="146dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="4dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/entrance_question">
+                </LinearLayout>
 
-        <RadioButton
-            android:id="@+id/entry_by_metro"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="onRadioButtonClicked"
-            android:text="Entry by metro" />
+                <RadioGroup
+                    android:id="@+id/first_question_radio"
+                    android:layout_width="296dp"
+                    android:layout_height="257dp"
+                    android:layout_marginStart="44dp"
+                    android:layout_marginTop="8dp"
+                    android:orientation="vertical"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/question1">
 
-        <RadioButton
-            android:id="@+id/entry_by_land"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="onRadioButtonClicked"
-            android:text="Entry by land (the doors)" />
+                    <RadioButton
+                        android:id="@+id/Registered"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="onRadioButtonClicked"
+                        android:text="@string/Registered_student" />
 
-        <RadioButton
-            android:id="@+id/entry_by_window"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="onRadioButtonClicked"
-            android:text="Entry by window" />
-    </RadioGroup>
+                    <RadioButton
+                        android:id="@+id/Work"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="onRadioButtonClicked"
+                        android:text="@string/Work" />
+
+                    <RadioButton
+                        android:id="@+id/friend"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="onRadioButtonClicked"
+                        android:text="@string/visit_friend" />
+
+                    <RadioButton
+                        android:id="@+id/college"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="onRadioButtonClicked"
+                        android:text="@string/visit_college" />
+
+                    <RadioButton
+                        android:id="@+id/other"
+                        android:layout_width="92dp"
+                        android:layout_height="wrap_content"
+                        android:onClick="onRadioButtonClicked"
+                        android:text="@string/other" />
+                </RadioGroup>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/second_question_layout"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:id="@+id/question2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/icon_sign_post"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="17dp"
+                        android:importantForAccessibility="no"
+                        app:srcCompat="@drawable/ic_baseline_signpost_24"/>
+
+                    <TextView
+                        android:id="@+id/entrance_question"
+                        android:layout_width="321dp"
+                        android:layout_height="36dp"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginTop="13dp"
+                        android:text="@string/question2" />
+
+                </LinearLayout>
+
+                <RadioGroup
+                    android:id="@+id/second_question_radio"
+                    android:layout_width="209dp"
+                    android:layout_height="146dp"
+                    android:layout_marginStart="48dp"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/entrance_question">
+
+                    <RadioButton
+                        android:id="@+id/entry_by_metro"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="onRadioButtonClicked"
+                        android:text="Entry by metro" />
+
+                    <RadioButton
+                        android:id="@+id/entry_by_land"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="onRadioButtonClicked"
+                        android:text="Entry by land (the doors)" />
+
+                    <RadioButton
+                        android:id="@+id/entry_by_window"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="onRadioButtonClicked"
+                        android:text="Entry by window" />
+                </RadioGroup>
+
+            </LinearLayout>
+            
+        </LinearLayout>
+    </ScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
