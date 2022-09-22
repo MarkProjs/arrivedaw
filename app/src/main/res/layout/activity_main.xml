@@ -223,6 +223,7 @@
                         android:text="Entry by window" />
                 </RadioGroup>
             </LinearLayout>
+            
 
             <LinearLayout
                 android:id="@+id/third_question_layout"
