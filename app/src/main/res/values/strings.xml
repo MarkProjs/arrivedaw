@@ -13,6 +13,9 @@
     <string name="question2">How are you entering into Dawson?</string>
     <string name="question3">Student number</string>
     <string name="generate">Generate QR</string>
+    <string name="metro_car_question">Number of the metro car</string>
+    <string name="day_arrival_question">What day do you plan on arriving?</string>
+    <string name="time_arrival_question">What time do you plan on arriving?</string>
 
     <string-array name="dawson_wings">
         <item>A</item>
