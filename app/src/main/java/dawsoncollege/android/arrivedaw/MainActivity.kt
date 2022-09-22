@@ -23,6 +23,15 @@ class MainActivity : AppCompatActivity() {
 //        val qrTestString = "Hello this is a test string! It will be used to generate a QR code"
 //        binding.QRResult.setImageBitmap(encodeStringToBitmap(qrTestString))
 
+
+        //setting up the dawson wing dropdown menu
+        val dawsonWings = resources.getStringArray(R.array.dawson_wings)
+        val dawsonWingsSpinner = findViewById<Spinner>(R.id.dawson_wings)
+        if (dawsonWingsSpinner != null) {
+            val dawsonWingsAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, dawsonWings)
+            dawsonWingsSpinner.adapter = dawsonWingsAdapter;
+        }
+
         //setting up metro spinner
         val metroLine = resources.getStringArray(R.array.metro_lines)
         val metroLineSpinner = findViewById<Spinner>(R.id.metro_spinner)
