@@ -31,6 +31,14 @@ class MainActivity : AppCompatActivity() {
             val dawsonWingsAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, dawsonWings)
             dawsonWingsSpinner.adapter = dawsonWingsAdapter;
         }
+
+        //setting up metro spinner
+        val metroLine = resources.getStringArray(R.array.metro_lines)
+        val metroLineSpinner = findViewById<Spinner>(R.id.metro_spinner)
+        if (metroLineSpinner != null) {
+            val metroLineAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, metroLine)
+            metroLineSpinner.adapter = metroLineAdapter
+        }
     }
 
     @Throws(WriterException::class)
