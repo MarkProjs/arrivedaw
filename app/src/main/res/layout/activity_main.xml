@@ -404,8 +404,7 @@
                         <EditText
                             android:id="@+id/room_number"
                             android:layout_width="80dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="20dp"/>
+                            android:layout_height="wrap_content" />
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -414,9 +413,56 @@
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="12dp"
+                            android:layout_marginTop="25dp"
                             android:importantForAccessibility="no"
                             app:srcCompat="@drawable/ic_baseline_stairs_24"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginStart="12dp"
+                            android:text="I will require a ladder"/>
+
+                        <CheckBox
+                            android:id="@+id/stairs_checkbox"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginStart="12dp"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginTop="23dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:srcCompat="@drawable/ic_baseline_calendar_one_month_24">
+                            </ImageView>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/day_arrival_question"
+                                android:layout_marginStart="12dp">
+                            </TextView>
+                        </LinearLayout>
+                        <DatePicker
+                            android:id="@+id/window_date"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:datePickerMode="spinner"
+                            android:calendarViewShown="false"
+                            android:layout_marginStart="30dp">
+
+                        </DatePicker>
                     </LinearLayout>
 
                 </LinearLayout>
