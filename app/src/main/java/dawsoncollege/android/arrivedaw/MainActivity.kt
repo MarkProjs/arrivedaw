@@ -34,15 +34,17 @@ class MainActivity : AppCompatActivity() {
         val dawsonWings = resources.getStringArray(R.array.dawson_wings)
         val dawsonWingsSpinner = findViewById<Spinner>(R.id.dawson_wings)
         if (dawsonWingsSpinner != null) {
-            val dawsonWingsAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, dawsonWings)
-            dawsonWingsSpinner.adapter = dawsonWingsAdapter;
+            val dawsonWingsAdapter =
+                ArrayAdapter(this, android.R.layout.simple_spinner_item, dawsonWings)
+            dawsonWingsSpinner.adapter = dawsonWingsAdapter
         }
 
         //setting up metro spinner
         val metroLine = resources.getStringArray(R.array.metro_lines)
         val metroLineSpinner = findViewById<Spinner>(R.id.metro_spinner)
         if (metroLineSpinner != null) {
-            val metroLineAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, metroLine)
+            val metroLineAdapter =
+                ArrayAdapter(this, android.R.layout.simple_spinner_item, metroLine)
             metroLineSpinner.adapter = metroLineAdapter
         }
 
@@ -76,8 +78,8 @@ class MainActivity : AppCompatActivity() {
             landLayout.visibility = View.GONE
             windowLayout.visibility = View.VISIBLE
         }
-        }
     }
+}
 
     @Throws(WriterException::class)
     fun encodeStringToBitmap(str: String): Bitmap {
