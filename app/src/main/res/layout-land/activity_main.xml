@@ -21,7 +21,7 @@
     <!--        app:layout_constraintVertical_bias="1.0" />-->
     <ScrollView
         android:id="@+id/root_layout"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -30,7 +30,7 @@
 
         <LinearLayout
             android:id="@+id/main_linear"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:orientation="vertical"
@@ -40,13 +40,13 @@
 
             <LinearLayout
                 android:id="@+id/desc_layout"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/app_description_id"
-                    android:layout_width="366dp"
+                    android:layout_width="match_parent"
                     android:layout_height="125dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="12dp"
@@ -61,7 +61,7 @@
 
                 <TextView
                     android:id="@+id/unspecified_id"
-                    android:layout_width="365dp"
+                    android:layout_width="match_parent"
                     android:layout_height="43dp"
                     android:layout_marginTop="8dp"
                     android:text="@string/unspecified"
@@ -72,7 +72,7 @@
 
                 <TextView
                     android:id="@+id/fillForm_id"
-                    android:layout_width="362dp"
+                    android:layout_width="match_parent"
                     android:layout_height="62dp"
                     android:layout_marginTop="4dp"
                     android:text="@string/fillForm"
@@ -95,7 +95,7 @@
 
                 <LinearLayout
                     android:id="@+id/question1"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
@@ -103,13 +103,13 @@
                         android:id="@+id/icon_education_hat"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="17dp"
+                        android:layout_marginTop="12dp"
                         android:importantForAccessibility="no"
                         app:srcCompat="@drawable/ic_baseline_school_24" />
 
                     <TextView
                         android:id="@+id/reason_question"
-                        android:layout_width="332dp"
+                        android:layout_width="match_parent"
                         android:layout_height="37dp"
                         android:layout_marginStart="12dp"
                         android:layout_marginTop="13dp"
@@ -119,7 +119,7 @@
 
                 <RadioGroup
                     android:id="@+id/first_question_radio"
-                    android:layout_width="296dp"
+                    android:layout_width="match_parent"
                     android:layout_height="257dp"
                     android:layout_marginStart="44dp"
                     android:layout_marginTop="8dp"
@@ -129,35 +129,35 @@
 
                     <RadioButton
                         android:id="@+id/Registered"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:onClick="onRadioButtonClicked"
                         android:text="@string/Registered_student" />
 
                     <RadioButton
                         android:id="@+id/Work"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:onClick="onRadioButtonClicked"
                         android:text="@string/Work" />
 
                     <RadioButton
                         android:id="@+id/friend"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:onClick="onRadioButtonClicked"
                         android:text="@string/visit_friend" />
 
                     <RadioButton
                         android:id="@+id/college"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:onClick="onRadioButtonClicked"
                         android:text="@string/visit_college" />
 
                     <RadioButton
                         android:id="@+id/other"
-                        android:layout_width="92dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:onClick="onRadioButtonClicked"
                         android:text="@string/other" />
@@ -166,27 +166,27 @@
 
             <LinearLayout
                 android:id="@+id/second_question_layout"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="30dp"
                 android:orientation="vertical">
 
                 <LinearLayout
                     android:id="@+id/question2"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <ImageView
                         android:id="@+id/icon_sign_post"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="17dp"
+                        android:layout_marginTop="12dp"
                         android:importantForAccessibility="no"
                         app:srcCompat="@drawable/ic_baseline_signpost_24" />
 
                     <TextView
                         android:id="@+id/entrance_question"
-                        android:layout_width="321dp"
+                        android:layout_width="match_parent"
                         android:layout_height="36dp"
                         android:layout_marginStart="12dp"
                         android:layout_marginTop="13dp"
@@ -196,7 +196,7 @@
 
                 <RadioGroup
                     android:id="@+id/second_question_radio"
-                    android:layout_width="204dp"
+                    android:layout_width="match_parent"
                     android:layout_height="123dp"
                     android:layout_marginStart="48dp"
                     android:layout_marginTop="4dp"
@@ -205,21 +205,21 @@
 
                     <RadioButton
                         android:id="@+id/entry_by_metro"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:onClick="onRadioButtonClicked"
                         android:text="Entry by metro" />
 
                     <RadioButton
                         android:id="@+id/entry_by_land"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:onClick="onRadioButtonClicked"
                         android:text="Entry by land (the doors)" />
 
                     <RadioButton
                         android:id="@+id/entry_by_window"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:onClick="onRadioButtonClicked"
                         android:text="Entry by window" />
@@ -234,14 +234,14 @@
 
                 <LinearLayout
                     android:id="@+id/subform_metro"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:visibility="gone"
                     tools:visibility="gone">
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
@@ -249,26 +249,24 @@
                             android:id="@+id/icon_metro"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            app:srcCompat="@drawable/ic_baseline_train_24"></ImageView>
+                            app:srcCompat="@drawable/ic_baseline_train_24"/>
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="300dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="12dp"
-                            android:text="@string/starting_metro"></TextView>
+                            android:text="@string/starting_metro"/>
 
                         <Spinner
                             android:id="@+id/metro_spinner"
-                            android:layout_width="wrap_content"
+                            android:layout_width="200dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="25dp"
-                            android:spinnerMode="dropdown">
-
-                        </Spinner>
+                            android:spinnerMode="dropdown"/>
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="23dp"
                         android:orientation="horizontal">
@@ -278,31 +276,29 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
-                            app:srcCompat="@drawable/ic_baseline_123_24"></ImageView>
+                            app:srcCompat="@drawable/ic_baseline_123_24"/>
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="300dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="12dp"
-                            android:text="@string/metro_car_question"></TextView>
+                            android:text="@string/metro_car_question"/>
 
                         <EditText
                             android:id="@+id/metro_text"
-                            android:layout_width="100dp"
+                            android:layout_width="200dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="10dp">
-
-                        </EditText>
+                            android:layout_marginStart="10dp"/>
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="23dp"
                         android:orientation="vertical">
 
                         <LinearLayout
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">
 
@@ -310,29 +306,27 @@
                                 android:id="@+id/icon_calender"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                app:srcCompat="@drawable/ic_baseline_calendar_one_month_24"></ImageView>
+                                app:srcCompat="@drawable/ic_baseline_calendar_one_month_24"/>
 
                             <TextView
-                                android:layout_width="wrap_content"
+                                android:layout_width="300dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="12dp"
-                                android:text="@string/day_arrival_question"></TextView>
+                                android:text="@string/day_arrival_question"/>
                         </LinearLayout>
 
                         <DatePicker
                             android:id="@+id/metro_date"
-                            android:layout_width="wrap_content"
+                            android:layout_width="300dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="30dp"
                             android:calendarViewShown="false"
-                            android:datePickerMode="spinner">
-
-                        </DatePicker>
+                            android:datePickerMode="spinner"/>
 
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="23dp"
                         android:orientation="vertical">
@@ -349,7 +343,7 @@
                                 app:srcCompat="@drawable/ic_baseline_access_time_one_24" />
 
                             <TextView
-                                android:layout_width="wrap_content"
+                                android:layout_width="300dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="12dp"
                                 android:text="@string/time_arrival_question" />
@@ -357,7 +351,7 @@
 
                         <TimePicker
                             android:id="@+id/metro_time"
-                            android:layout_width="wrap_content"
+                            android:layout_width="300dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="30dp"
                             android:timePickerMode="spinner" />
@@ -367,13 +361,14 @@
 
                 <LinearLayout
                     android:id="@+id/subform_doors"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:visibility="gone">
+                    android:visibility="gone"
+                    tools:visibility="gone">
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="23dp"
                         android:orientation="horizontal">
@@ -386,26 +381,26 @@
                             app:srcCompat="@drawable/ic_baseline_apartment_24" />
 
                         <TextView
-                            android:layout_width="match_parent"
+                            android:layout_width="300dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="12dp"
                             android:text="Which wing will you enter from" />
 
                         <Spinner
                             android:id="@+id/dawson_wings"
-                            android:layout_width="wrap_content"
+                            android:layout_width="200dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="12dp"
                             android:spinnerMode="dropdown" />
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
 
                         <LinearLayout
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">
 
@@ -416,7 +411,7 @@
                                 app:srcCompat="@drawable/ic_baseline_access_time_one_24" />
 
                             <TextView
-                                android:layout_width="wrap_content"
+                                android:layout_width="300dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="12dp"
                                 android:text="@string/time_arrival_question" />
@@ -424,7 +419,7 @@
 
                         <TimePicker
                             android:id="@+id/time_subform_door"
-                            android:layout_width="wrap_content"
+                            android:layout_width="300dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="30dp"
                             android:timePickerMode="spinner" />
@@ -438,7 +433,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:visibility="gone"
-                    tools:visibility="visible">
+                    tools:visibility="gone">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -454,14 +449,14 @@
                             app:srcCompat="@drawable/ic_baseline_meeting_room_door_24" />
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="300dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="12dp"
                             android:text="What room are you entering into" />
 
                         <EditText
                             android:id="@+id/room_number"
-                            android:layout_width="100dp"
+                            android:layout_width="200dp"
                             android:layout_height="wrap_content" />
                     </LinearLayout>
 
@@ -478,7 +473,7 @@
                             app:srcCompat="@drawable/ic_baseline_stairs_24" />
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="300dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="12dp"
                             android:layout_marginTop="12dp"
@@ -493,31 +488,31 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="23dp"
                         android:orientation="vertical">
 
                         <LinearLayout
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">
 
                             <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                app:srcCompat="@drawable/ic_baseline_calendar_one_month_24"></ImageView>
+                                app:srcCompat="@drawable/ic_baseline_calendar_one_month_24"/>
 
                             <TextView
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="12dp"
-                                android:text="@string/day_arrival_question"></TextView>
+                                android:text="@string/day_arrival_question"/>
                         </LinearLayout>
 
                         <DatePicker
                             android:id="@+id/window_date"
-                            android:layout_width="wrap_content"
+                            android:layout_width="300dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="30dp"
                             android:calendarViewShown="false"
@@ -531,7 +526,7 @@
 
             <LinearLayout
                 android:id="@+id/third_question_layout"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 app:layout_constraintTop_toBottomOf="@id/second_question_layout">
@@ -540,12 +535,12 @@
                     android:id="@+id/icon_number_sign"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="17dp"
+                    android:layout_marginTop="12dp"
                     android:importantForAccessibility="no"
                     app:srcCompat="@drawable/ic_baseline_numbers_24" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="120dp"
                     android:layout_height="36dp"
                     android:layout_marginStart="12dp"
                     android:text="@string/question3" />
