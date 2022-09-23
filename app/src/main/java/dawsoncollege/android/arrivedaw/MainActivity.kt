@@ -3,7 +3,12 @@ package dawsoncollege.android.arrivedaw
 import android.graphics.Bitmap
 import android.graphics.Color
 import android.os.Bundle
+import android.view.View
 import android.widget.ArrayAdapter
+import android.widget.Button
+import android.widget.LinearLayout
+import android.widget.RadioButton
+import android.widget.RadioGroup
 import android.widget.Spinner
 import android.widget.TimePicker
 import androidx.appcompat.app.AppCompatActivity
@@ -40,6 +45,38 @@ class MainActivity : AppCompatActivity() {
             val metroLineAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, metroLine)
             metroLineSpinner.adapter = metroLineAdapter
         }
+
+        val metroRadio: RadioButton = findViewById<RadioButton>(R.id.entry_by_metro)
+        val landRadio: RadioButton = findViewById<RadioButton>(R.id.entry_by_land)
+        val windowRadio: RadioButton = findViewById<RadioButton>(R.id.entry_by_window)
+        metroRadio.setOnClickListener {
+            val metroLayout: LinearLayout = findViewById<LinearLayout>(R.id.subform_metro)
+            val landLayout: LinearLayout = findViewById<LinearLayout>(R.id.subform_doors)
+            val windowLayout: LinearLayout = findViewById<LinearLayout>(R.id.subform_window)
+            metroLayout.visibility = View.VISIBLE
+            landLayout.visibility = View.GONE
+            windowLayout.visibility = View.GONE
+        }
+
+        landRadio.setOnClickListener {
+            val metroLayout: LinearLayout = findViewById<LinearLayout>(R.id.subform_metro)
+            val landLayout: LinearLayout = findViewById<LinearLayout>(R.id.subform_doors)
+            val windowLayout: LinearLayout = findViewById<LinearLayout>(R.id.subform_window)
+            metroLayout.visibility = View.GONE
+            landLayout.visibility = View.VISIBLE
+            windowLayout.visibility = View.GONE
+
+        }
+
+        windowRadio.setOnClickListener {
+            val metroLayout: LinearLayout = findViewById<LinearLayout>(R.id.subform_metro)
+            val landLayout: LinearLayout = findViewById<LinearLayout>(R.id.subform_doors)
+            val windowLayout: LinearLayout = findViewById<LinearLayout>(R.id.subform_window)
+            metroLayout.visibility = View.GONE
+            landLayout.visibility = View.GONE
+            windowLayout.visibility = View.VISIBLE
+        }
+        }
     }
 
     @Throws(WriterException::class)
@@ -69,4 +106,3 @@ class MainActivity : AppCompatActivity() {
 
         return bitmap
     }
-}
