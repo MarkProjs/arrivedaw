@@ -76,8 +76,8 @@ class MainActivity : AppCompatActivity() {
             landLayout.visibility = View.GONE
             windowLayout.visibility = View.VISIBLE
         }
-        }
     }
+}
 
     @Throws(WriterException::class)
     fun encodeStringToBitmap(str: String): Bitmap {
