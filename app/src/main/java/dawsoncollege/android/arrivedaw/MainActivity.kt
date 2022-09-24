@@ -64,14 +64,14 @@ class MainActivity : AppCompatActivity() {
 
         //event listener for the generate qr button
         val genQr = findViewById<Button>(R.id.generate_button)
-        genQr.setOnClickListener{
-            val qrResult: ImageView = findViewById<ImageView>(R.id.QR_result)
-            val firstRadioGroup: RadioGroup = findViewById<RadioGroup>(R.id.first_question_radio)
-            val secondRadioGroup: RadioGroup = findViewById<RadioGroup>(R.id.second_question_radio)
-            val studentId: EditText = findViewById<EditText>(R.id.student_number)
-            val firstErrorText: TextView = findViewById<TextView>(R.id.error_first_question)
-            val secondErrorText: TextView = findViewById<TextView>(R.id.error_second_question)
-            val thirdErrorText: TextView = findViewById<TextView>(R.id.error_third_question)
+        genQr.setOnClickListener {
+            val qrResult: ImageView = findViewById(R.id.QR_result)
+            val firstRadioGroup: RadioGroup = findViewById(R.id.first_question_radio)
+            val secondRadioGroup: RadioGroup = findViewById(R.id.second_question_radio)
+            val studentId: EditText = findViewById(R.id.student_number)
+            val firstErrorText: TextView = findViewById(R.id.error_first_question)
+            val secondErrorText: TextView = findViewById(R.id.error_second_question)
+            val thirdErrorText: TextView = findViewById(R.id.error_third_question)
             qrResult.visibility = View.GONE
             firstErrorText.visibility = View.GONE
             secondErrorText.visibility = View.GONE
