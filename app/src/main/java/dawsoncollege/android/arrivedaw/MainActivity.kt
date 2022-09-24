@@ -2,6 +2,7 @@ package dawsoncollege.android.arrivedaw
 
 import android.graphics.Bitmap
 import android.graphics.Color
+import android.icu.util.Calendar
 import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
@@ -81,10 +82,8 @@ class MainActivity : AppCompatActivity() {
             landLayout.visibility = View.GONE
             windowLayout.visibility = View.VISIBLE
         }
-
         val metroDatePicker: DatePicker = findViewById<DatePicker>(R.id.metro_date)
         val windowDatePicker: DatePicker = findViewById<DatePicker>(R.id.window_date)
-        val daysAdded = 1
         metroDatePicker.minDate = System.currentTimeMillis() + 1000
         windowDatePicker.minDate = System.currentTimeMillis() + 1000
 

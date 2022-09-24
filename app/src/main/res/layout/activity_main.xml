@@ -291,7 +291,8 @@
                             android:layout_width="100dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
-                            android:maxLength="4"/>
+                            android:maxLength="4"
+                            android:inputType=""/>
                     </LinearLayout>
 
                     <LinearLayout
