@@ -120,35 +120,30 @@
                         android:id="@+id/Registered"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:onClick="onRadioButtonClicked"
                         android:text="@string/Registered_student" />
 
                     <RadioButton
                         android:id="@+id/Work"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:onClick="onRadioButtonClicked"
                         android:text="@string/Work" />
 
                     <RadioButton
                         android:id="@+id/friend"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:onClick="onRadioButtonClicked"
                         android:text="@string/visit_friend" />
 
                     <RadioButton
                         android:id="@+id/college"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:onClick="onRadioButtonClicked"
                         android:text="@string/visit_college" />
 
                     <RadioButton
                         android:id="@+id/other"
                         android:layout_width="92dp"
                         android:layout_height="wrap_content"
-                        android:onClick="onRadioButtonClicked"
                         android:text="@string/other" />
                 </RadioGroup>
             </LinearLayout>
@@ -568,7 +563,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="@android:color/holo_red_dark"
                     android:text="Must provide an entry reason"
-                    android:visibility="gone"
+                    android:visibility="invisible"
                     tools:visibility="gone"/>
                 <TextView
                     android:id="@+id/error_second_question"
@@ -576,7 +571,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="@android:color/holo_red_dark"
                     android:text="Must provide an entry method"
-                    android:visibility="gone"
+                    android:visibility="invisible"
                     tools:visibility="gone"/>
                 <TextView
                     android:id="@+id/error_third_question"
@@ -584,7 +579,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="@android:color/holo_red_dark"
                     android:text="Must provide a student number"
-                    android:visibility="gone"
+                    android:visibility="invisible"
                     tools:visibility="gone"/>
 
                 <ImageView
@@ -600,7 +595,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="1.0"
-                    android:visibility="gone"
+                    android:visibility="invisible"
                     tools:visibility="gone"/>
             </LinearLayout>
         </LinearLayout>
