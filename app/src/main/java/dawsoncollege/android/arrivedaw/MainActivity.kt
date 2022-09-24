@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Button
+import android.widget.DatePicker
+import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.RadioButton
 import android.widget.RadioGroup
@@ -17,6 +19,7 @@ import com.google.zxing.WriterException
 import com.google.zxing.common.BitMatrix
 import com.google.zxing.qrcode.QRCodeWriter
 import dawsoncollege.android.arrivedaw.databinding.ActivityMainBinding
+import java.time.LocalDate
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -78,6 +81,15 @@ class MainActivity : AppCompatActivity() {
             landLayout.visibility = View.GONE
             windowLayout.visibility = View.VISIBLE
         }
+
+        val metroDatePicker: DatePicker = findViewById<DatePicker>(R.id.metro_date)
+        val windowDatePicker: DatePicker = findViewById<DatePicker>(R.id.window_date)
+        val daysAdded = 1
+        metroDatePicker.minDate = System.currentTimeMillis() + 1000
+        windowDatePicker.minDate = System.currentTimeMillis() + 1000
+
+        val metroNumText: EditText = findViewById<EditText>(R.id.metro_text)
+
     }
 }
 
