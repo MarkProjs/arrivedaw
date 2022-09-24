@@ -99,20 +99,17 @@ class MainActivity : AppCompatActivity() {
 
             }
         })
-
-
-
     }
 
-    override fun onSaveInstanceState(outState: Bundle) {
-        outState.
-        super.onSaveInstanceState(outState)
-    }
-
-    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
-        super.onRestoreInstanceState(savedInstanceState)
-        savedInstanceState.
-    }
+//    override fun onSaveInstanceState(outState: Bundle) {
+//        outState.
+//        super.onSaveInstanceState(outState)
+//    }
+//
+//    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+//        super.onRestoreInstanceState(savedInstanceState)
+//        savedInstanceState.
+//    }
 
     private fun generateQr() {
         val genQr: Button = binding.generateButton
