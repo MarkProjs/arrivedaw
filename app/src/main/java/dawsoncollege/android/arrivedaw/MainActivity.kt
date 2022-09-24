@@ -45,7 +45,10 @@ class MainActivity : AppCompatActivity() {
             val metroLineAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, metroLine)
             metroLineSpinner.adapter = metroLineAdapter
         }
+        subFormListener();
+    }
 
+    private fun subFormListener() {
         val metroRadio: RadioButton = findViewById<RadioButton>(R.id.entry_by_metro)
         val landRadio: RadioButton = findViewById<RadioButton>(R.id.entry_by_land)
         val windowRadio: RadioButton = findViewById<RadioButton>(R.id.entry_by_window)
