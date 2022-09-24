@@ -51,6 +51,13 @@ class MainActivity : AppCompatActivity() {
             metroLineSpinner.adapter = metroLineAdapter
         }
         subFormListener();
+
+        val metroDatePicker: DatePicker = findViewById<DatePicker>(R.id.metro_date)
+        val windowDatePicker: DatePicker = findViewById<DatePicker>(R.id.window_date)
+        val daysAdded = 1
+        metroDatePicker.minDate = System.currentTimeMillis() + 1000
+        windowDatePicker.minDate = System.currentTimeMillis() + 1000
+        
     }
 
     private fun subFormListener() {
@@ -84,15 +91,6 @@ class MainActivity : AppCompatActivity() {
             landLayout.visibility = View.GONE
             windowLayout.visibility = View.VISIBLE
         }
-
-        val metroDatePicker: DatePicker = findViewById<DatePicker>(R.id.metro_date)
-        val windowDatePicker: DatePicker = findViewById<DatePicker>(R.id.window_date)
-        val daysAdded = 1
-        metroDatePicker.minDate = System.currentTimeMillis() + 1000
-        windowDatePicker.minDate = System.currentTimeMillis() + 1000
-
-        val metroNumText: EditText = findViewById<EditText>(R.id.metro_text)
-
     }
 }
 
