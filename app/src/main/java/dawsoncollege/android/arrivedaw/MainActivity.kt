@@ -4,6 +4,7 @@ import android.graphics.Bitmap
 import android.graphics.Color
 import android.icu.util.Calendar
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
@@ -36,8 +37,6 @@ class MainActivity : AppCompatActivity() {
 
         val qrTestString = "Hello this is a test string! It will be used to generate a QR code"
         binding.QRResult?.setImageBitmap(encodeStringToBitmap(qrTestString))
-
-
         //setting up the dawson wing dropdown menu
         val dawsonWings = resources.getStringArray(R.array.dawson_wings)
         val dawsonWingsSpinner = binding.dawsonWings
@@ -103,6 +102,16 @@ class MainActivity : AppCompatActivity() {
 
 
 
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.
+        super.onSaveInstanceState(outState)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        savedInstanceState.
     }
 
     private fun generateQr() {
