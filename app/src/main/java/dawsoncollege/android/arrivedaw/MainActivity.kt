@@ -61,6 +61,15 @@ class MainActivity : AppCompatActivity() {
         metroDatePicker.minDate = System.currentTimeMillis() + 24*60*60*1000
         windowDatePicker.minDate = System.currentTimeMillis() + 24*60*60*1000
 
+        val editTextMetro = findViewById<EditText>(R.id.metro_text)
+        val editTextRoom = findViewById<EditText>(R.id.room_number)
+        val metroError = findViewById<TextView>(R.id.car_error)
+        val roomError = findViewById<TextView>(R.id.room_error)
+
+        if (editTextMetro.length() == 0 || editTextMetro.text.toString() == "0"){
+            metroError.visibility = View.VISIBLE
+        }
+
 
         //event listener for the generate qr button
         generateQr()
