@@ -4,6 +4,8 @@ import android.graphics.Bitmap
 import android.graphics.Color
 import android.icu.util.Calendar
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Button
@@ -22,6 +24,7 @@ import com.google.zxing.WriterException
 import com.google.zxing.common.BitMatrix
 import com.google.zxing.qrcode.QRCodeWriter
 import dawsoncollege.android.arrivedaw.databinding.ActivityMainBinding
+import org.w3c.dom.Text
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -61,9 +64,46 @@ class MainActivity : AppCompatActivity() {
         metroDatePicker.minDate = System.currentTimeMillis() + 24*60*60*1000
         windowDatePicker.minDate = System.currentTimeMillis() + 24*60*60*1000
 
-
         //event listener for the generate qr button
         generateQr()
+
+        //event listener for the number of metro
+        val metroNumber: EditText = findViewById<EditText>(R.id.metro_text)
+        metroNumber.addTextChangedListener(object : TextWatcher {
+            val metroError: TextView = findViewById<TextView>(R.id.metro_number_error)
+            override fun afterTextChanged(p0: Editable?) {}
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                metroError.visibility = View.GONE
+                 if (s.isNullOrEmpty() || s.startsWith('0')) {
+                    metroError.visibility = View.VISIBLE
+                }
+            }
+        })
+
+        //event listener for the wing room
+        val wingRoom: EditText = findViewById<EditText>(R.id.room_number)
+        wingRoom.addTextChangedListener(object : TextWatcher {
+            val roomError : TextView = findViewById<TextView>(R.id.room_number_error)
+            override fun afterTextChanged(p0: Editable?) {}
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                roomError.visibility = View.GONE
+                if (s != null) {
+                    if (!s.matches("[1-8][A-H][1-9][0-9]?".toRegex())){
+                        roomError.visibility = View.VISIBLE
+                    }
+                }
+                if (s.isNullOrEmpty()) {
+                    roomError.visibility = View.VISIBLE
+                }
+
+            }
+        })
+
+
+
     }
 
     private fun generateQr() {
