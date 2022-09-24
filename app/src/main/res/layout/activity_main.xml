@@ -6,27 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <!--    <ImageView-->
-    <!--        android:id="@+id/QR_result"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="match_parent"-->
-    <!--        android:adjustViewBounds="true"-->
-    <!--        android:background="#FFFFFF"-->
-    <!--        android:contentDescription="@string/qr_code_img_description"-->
-    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintHorizontal_bias="1.0"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toTopOf="parent"-->
-    <!--        app:layout_constraintVertical_bias="1.0" />-->
     <ScrollView
         android:id="@+id/root_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.238"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
         <LinearLayout
             android:id="@+id/main_linear"
@@ -131,35 +120,30 @@
                         android:id="@+id/Registered"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:onClick="onRadioButtonClicked"
                         android:text="@string/Registered_student" />
 
                     <RadioButton
                         android:id="@+id/Work"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:onClick="onRadioButtonClicked"
                         android:text="@string/Work" />
 
                     <RadioButton
                         android:id="@+id/friend"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:onClick="onRadioButtonClicked"
                         android:text="@string/visit_friend" />
 
                     <RadioButton
                         android:id="@+id/college"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:onClick="onRadioButtonClicked"
                         android:text="@string/visit_college" />
 
                     <RadioButton
                         android:id="@+id/other"
                         android:layout_width="92dp"
                         android:layout_height="wrap_content"
-                        android:onClick="onRadioButtonClicked"
                         android:text="@string/other" />
                 </RadioGroup>
             </LinearLayout>
@@ -249,13 +233,13 @@
                             android:id="@+id/icon_metro"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            app:srcCompat="@drawable/ic_baseline_train_24"/>
+                            app:srcCompat="@drawable/ic_baseline_train_24" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="12dp"
-                            android:text="@string/starting_metro"/>
+                            android:text="@string/starting_metro" />
 
                         <Spinner
                             android:id="@+id/metro_spinner"
@@ -278,21 +262,21 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
-                            app:srcCompat="@drawable/ic_baseline_123_24"/>
+                            app:srcCompat="@drawable/ic_baseline_123_24" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="12dp"
-                            android:text="@string/metro_car_question"/>
+                            android:text="@string/metro_car_question" />
 
                         <EditText
                             android:id="@+id/metro_text"
                             android:layout_width="100dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
-                            android:maxLength="4"
-                            android:inputType=""/>
+                            android:inputType="number"
+                            android:maxLength="4" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -310,13 +294,13 @@
                                 android:id="@+id/icon_calender"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                app:srcCompat="@drawable/ic_baseline_calendar_one_month_24"/>
+                                app:srcCompat="@drawable/ic_baseline_calendar_one_month_24" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="12dp"
-                                android:text="@string/day_arrival_question"/>
+                                android:text="@string/day_arrival_question" />
                         </LinearLayout>
 
                         <DatePicker
@@ -438,7 +422,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:visibility="gone"
-                    tools:visibility="visible">
+                    tools:visibility="gone">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -463,7 +447,7 @@
                             android:id="@+id/room_number"
                             android:layout_width="100dp"
                             android:layout_height="wrap_content"
-                            android:maxLength="4"/>
+                            android:maxLength="4" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -507,13 +491,13 @@
                             <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                app:srcCompat="@drawable/ic_baseline_calendar_one_month_24"/>
+                                app:srcCompat="@drawable/ic_baseline_calendar_one_month_24" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="12dp"
-                                android:text="@string/day_arrival_question"/>
+                                android:text="@string/day_arrival_question" />
                         </LinearLayout>
 
                         <DatePicker
@@ -556,7 +540,8 @@
                     android:layout_width="210dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"
-                    android:inputType="text" />
+                    android:inputType="number"
+                    android:maxLength="7" />
             </LinearLayout>
 
             <Button
@@ -566,6 +551,53 @@
                 android:layout_gravity="center_horizontal|center_vertical"
                 android:layout_marginTop="20dp"
                 android:text="@string/generate" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/error_first_question"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/holo_red_dark"
+                    android:text="Must provide an entry reason"
+                    android:visibility="invisible"
+                    tools:visibility="gone"/>
+                <TextView
+                    android:id="@+id/error_second_question"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/holo_red_dark"
+                    android:text="Must provide an entry method"
+                    android:visibility="invisible"
+                    tools:visibility="gone"/>
+                <TextView
+                    android:id="@+id/error_third_question"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/holo_red_dark"
+                    android:text="Must provide a student number"
+                    android:visibility="invisible"
+                    tools:visibility="gone"/>
+
+                <ImageView
+                    android:id="@+id/QR_result"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"
+                    android:background="#FFFFFF"
+                    android:contentDescription="@string/qr_code_img_description"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="1.0"
+                    android:visibility="invisible"
+                    tools:visibility="gone"/>
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 
