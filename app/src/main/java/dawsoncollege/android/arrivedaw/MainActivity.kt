@@ -4,6 +4,8 @@ import android.graphics.Bitmap
 import android.graphics.Color
 import android.icu.util.Calendar
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Button
@@ -22,6 +24,7 @@ import com.google.zxing.WriterException
 import com.google.zxing.common.BitMatrix
 import com.google.zxing.qrcode.QRCodeWriter
 import dawsoncollege.android.arrivedaw.databinding.ActivityMainBinding
+import org.w3c.dom.Text
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -37,7 +40,7 @@ class MainActivity : AppCompatActivity() {
 
         //setting up the dawson wing dropdown menu
         val dawsonWings = resources.getStringArray(R.array.dawson_wings)
-        val dawsonWingsSpinner = findViewById<Spinner>(R.id.dawson_wings)
+        val dawsonWingsSpinner = binding.dawsonWings
         if (dawsonWingsSpinner != null) {
             val dawsonWingsAdapter =
                 ArrayAdapter(this, android.R.layout.simple_spinner_item, dawsonWings)
@@ -46,7 +49,7 @@ class MainActivity : AppCompatActivity() {
 
         //setting up metro spinner
         val metroLine = resources.getStringArray(R.array.metro_lines)
-        val metroLineSpinner = findViewById<Spinner>(R.id.metro_spinner)
+        val metroLineSpinner = binding.metroSpinner
         if (metroLineSpinner != null) {
             val metroLineAdapter =
                 ArrayAdapter(this, android.R.layout.simple_spinner_item, metroLine)
@@ -56,72 +59,96 @@ class MainActivity : AppCompatActivity() {
         subFormListener();
 
         //setting up the date pickers to be default to tomorrow
-        val metroDatePicker: DatePicker = findViewById<DatePicker>(R.id.metro_date)
-        val windowDatePicker: DatePicker = findViewById<DatePicker>(R.id.window_date)
+        val metroDatePicker: DatePicker = binding.metroDate
+        val windowDatePicker: DatePicker = binding.windowDate
         metroDatePicker.minDate = System.currentTimeMillis() + 24*60*60*1000
         windowDatePicker.minDate = System.currentTimeMillis() + 24*60*60*1000
-
-        val editTextMetro = findViewById<EditText>(R.id.metro_text)
-        val editTextRoom = findViewById<EditText>(R.id.room_number)
-        val metroError = findViewById<TextView>(R.id.car_error)
-        val roomError = findViewById<TextView>(R.id.room_error)
-
-        if (editTextMetro.length() == 0 || editTextMetro.text.toString() == "0"){
-            metroError.visibility = View.VISIBLE
-        }
-
-
         //event listener for the generate qr button
         generateQr()
+
+        //event listener for the number of metro
+        val metroNumber: EditText = binding.metroText
+        metroNumber.addTextChangedListener(object : TextWatcher {
+            val metroError: TextView? = binding.metroNumberError
+            override fun afterTextChanged(p0: Editable?) {}
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                metroError?.visibility = View.GONE
+                 if (s.isNullOrEmpty() || s.startsWith('0')) {
+                    metroError?.visibility = View.VISIBLE
+                }
+            }
+        })
+
+        //event listener for the wing room
+        val wingRoom: EditText = binding.roomNumber
+        wingRoom.addTextChangedListener(object : TextWatcher {
+            val roomError : TextView? = binding.roomNumberError
+            override fun afterTextChanged(p0: Editable?) {}
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                roomError?.visibility = View.GONE
+                if (s != null) {
+                    if (!s.matches("[1-8][A-H][1-9][0-9]?".toRegex())){
+                        roomError?.visibility = View.VISIBLE
+                    }
+                }
+                if (s.isNullOrEmpty()) {
+                    roomError?.visibility = View.VISIBLE
+                }
+
+            }
+        })
+
+
+
     }
 
     private fun generateQr() {
-        val genQr = findViewById<Button>(R.id.generate_button)
+        val genQr: Button = binding.generateButton
         genQr.setOnClickListener {
-            val qrResult: ImageView = findViewById(R.id.QR_result)
-            val firstRadioGroup: RadioGroup = findViewById(R.id.first_question_radio)
-            val secondRadioGroup: RadioGroup = findViewById(R.id.second_question_radio)
-            val studentId: EditText = findViewById(R.id.student_number)
-            val firstErrorText: TextView = findViewById(R.id.error_first_question)
-            val secondErrorText: TextView = findViewById(R.id.error_second_question)
-            val thirdErrorText: TextView = findViewById(R.id.error_third_question)
-            qrResult.visibility = View.GONE
-            firstErrorText.visibility = View.GONE
-            secondErrorText.visibility = View.GONE
-            thirdErrorText.visibility = View.GONE
+            val qrResult: ImageView? = binding.QRResult
+            val firstRadioGroup: RadioGroup = binding.firstQuestionRadio
+            val secondRadioGroup: RadioGroup = binding.secondQuestionRadio
+            val studentId: EditText = binding.studentNumber
+            val firstErrorText: TextView? = binding.errorFirstQuestion
+            val secondErrorText: TextView? = binding.errorSecondQuestion
+            val thirdErrorText: TextView? = binding.errorThirdQuestion
+            qrResult?.visibility = View.GONE
+            firstErrorText?.visibility = View.GONE
+            secondErrorText?.visibility = View.GONE
+            thirdErrorText?.visibility = View.GONE
             if (firstRadioGroup.checkedRadioButtonId == -1) {
-                firstErrorText.visibility = View.VISIBLE
+                firstErrorText?.visibility = View.VISIBLE
             }
             if (secondRadioGroup.checkedRadioButtonId == -1) {
-                secondErrorText.visibility = View.VISIBLE
+                secondErrorText?.visibility = View.VISIBLE
             }
             if (studentId.text.length < 7) {
-                thirdErrorText.visibility = View.VISIBLE
+                thirdErrorText?.visibility = View.VISIBLE
             }
 
             if (firstRadioGroup.checkedRadioButtonId != -1 && secondRadioGroup.checkedRadioButtonId != -1 && studentId.text.length == 7) {
-                qrResult.visibility = View.VISIBLE
+                qrResult?.visibility = View.VISIBLE
             }
         }
     }
 
     private fun subFormListener() {
-        val metroRadio: RadioButton = findViewById<RadioButton>(R.id.entry_by_metro)
-        val landRadio: RadioButton = findViewById<RadioButton>(R.id.entry_by_land)
-        val windowRadio: RadioButton = findViewById<RadioButton>(R.id.entry_by_window)
+        val metroRadio: RadioButton = binding.entryByMetro
+        val landRadio: RadioButton = binding.entryByLand
+        val windowRadio: RadioButton = binding.entryByWindow
+        val metroLayout: LinearLayout = binding.subformMetro
+        val landLayout: LinearLayout = binding.subformDoors
+        val windowLayout: LinearLayout = binding.subformWindow
         metroRadio.setOnClickListener {
-            val metroLayout: LinearLayout = findViewById<LinearLayout>(R.id.subform_metro)
-            val landLayout: LinearLayout = findViewById<LinearLayout>(R.id.subform_doors)
-            val windowLayout: LinearLayout = findViewById<LinearLayout>(R.id.subform_window)
             metroLayout.visibility = View.VISIBLE
             landLayout.visibility = View.GONE
             windowLayout.visibility = View.GONE
         }
 
         landRadio.setOnClickListener {
-            val metroLayout: LinearLayout = findViewById<LinearLayout>(R.id.subform_metro)
-            val landLayout: LinearLayout = findViewById<LinearLayout>(R.id.subform_doors)
-            val windowLayout: LinearLayout = findViewById<LinearLayout>(R.id.subform_window)
             metroLayout.visibility = View.GONE
             landLayout.visibility = View.VISIBLE
             windowLayout.visibility = View.GONE
@@ -129,9 +156,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         windowRadio.setOnClickListener {
-            val metroLayout: LinearLayout = findViewById<LinearLayout>(R.id.subform_metro)
-            val landLayout: LinearLayout = findViewById<LinearLayout>(R.id.subform_doors)
-            val windowLayout: LinearLayout = findViewById<LinearLayout>(R.id.subform_window)
             metroLayout.visibility = View.GONE
             landLayout.visibility = View.GONE
             windowLayout.visibility = View.VISIBLE
