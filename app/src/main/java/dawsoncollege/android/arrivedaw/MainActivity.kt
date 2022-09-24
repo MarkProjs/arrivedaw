@@ -101,9 +101,6 @@ class MainActivity : AppCompatActivity() {
 
             }
         })
-
-
-
     }
 
     private fun generateQr() {
