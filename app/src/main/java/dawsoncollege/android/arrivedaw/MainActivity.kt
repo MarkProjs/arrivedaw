@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Button
+import android.widget.DatePicker
+import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.RadioButton
 import android.widget.RadioGroup
@@ -17,6 +19,7 @@ import com.google.zxing.WriterException
 import com.google.zxing.common.BitMatrix
 import com.google.zxing.qrcode.QRCodeWriter
 import dawsoncollege.android.arrivedaw.databinding.ActivityMainBinding
+import java.time.LocalDate
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -34,15 +37,17 @@ class MainActivity : AppCompatActivity() {
         val dawsonWings = resources.getStringArray(R.array.dawson_wings)
         val dawsonWingsSpinner = findViewById<Spinner>(R.id.dawson_wings)
         if (dawsonWingsSpinner != null) {
-            val dawsonWingsAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, dawsonWings)
-            dawsonWingsSpinner.adapter = dawsonWingsAdapter;
+            val dawsonWingsAdapter =
+                ArrayAdapter(this, android.R.layout.simple_spinner_item, dawsonWings)
+            dawsonWingsSpinner.adapter = dawsonWingsAdapter
         }
 
         //setting up metro spinner
         val metroLine = resources.getStringArray(R.array.metro_lines)
         val metroLineSpinner = findViewById<Spinner>(R.id.metro_spinner)
         if (metroLineSpinner != null) {
-            val metroLineAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, metroLine)
+            val metroLineAdapter =
+                ArrayAdapter(this, android.R.layout.simple_spinner_item, metroLine)
             metroLineSpinner.adapter = metroLineAdapter
         }
 
@@ -76,6 +81,15 @@ class MainActivity : AppCompatActivity() {
             landLayout.visibility = View.GONE
             windowLayout.visibility = View.VISIBLE
         }
+
+        val metroDatePicker: DatePicker = findViewById<DatePicker>(R.id.metro_date)
+        val windowDatePicker: DatePicker = findViewById<DatePicker>(R.id.window_date)
+        val daysAdded = 1
+        metroDatePicker.minDate = System.currentTimeMillis() + 1000
+        windowDatePicker.minDate = System.currentTimeMillis() + 1000
+
+        val metroNumText: EditText = findViewById<EditText>(R.id.metro_text)
+
     }
 }
 
