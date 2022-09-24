@@ -63,6 +63,10 @@ class MainActivity : AppCompatActivity() {
 
 
         //event listener for the generate qr button
+        generateQr()
+    }
+
+    private fun generateQr() {
         val genQr = findViewById<Button>(R.id.generate_button)
         genQr.setOnClickListener {
             val qrResult: ImageView = findViewById(R.id.QR_result)
