@@ -210,7 +210,7 @@ class MainActivity : AppCompatActivity() {
         var stringInput = ""
 
         if (metroRadio.isChecked) {
-            val dateMetro = "${metroDate.year} - ${metroDate.month} - ${metroDate.dayOfMonth}"
+            val dateMetro = "${metroDate.year} - ${metroDate.month + 1} - ${metroDate.dayOfMonth}"
             val timeMetro = "${metroTime.hour}: ${metroTime.minute}"
             stringInput = "{reason: ${rb1.text}," +
                     "entry: ${metroRadio.text}," +
@@ -228,7 +228,7 @@ class MainActivity : AppCompatActivity() {
                     "arriveTime: $timeDoor," +
                     "studentId: ${studentId.text}}"
         } else if (windowRadio.isChecked) {
-            val dateWindow = "${windowDate.year} - ${windowDate.month} - ${windowDate.dayOfMonth}"
+            val dateWindow = "${windowDate.year} - ${windowDate.month + 1} - ${windowDate.dayOfMonth}"
             stringInput = "{reason: ${rb1.text}," +
                     "entry: ${windowRadio.text}," +
                     "roomNumber: ${wingRoom.text}," +
