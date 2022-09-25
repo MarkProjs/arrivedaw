@@ -584,7 +584,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="@android:color/holo_red_dark"
                     android:text="Must provide an entry reason"
-                    android:visibility="invisible"
+                    android:visibility="gone"
                     tools:visibility="gone"/>
                 <TextView
                     android:id="@+id/error_second_question"
@@ -592,7 +592,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="@android:color/holo_red_dark"
                     android:text="Must provide an entry method"
-                    android:visibility="invisible"
+                    android:visibility="gone"
                     tools:visibility="gone"/>
                 <TextView
                     android:id="@+id/error_third_question"
@@ -600,7 +600,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="@android:color/holo_red_dark"
                     android:text="Must provide a valid student number (Must be 7 characters)"
-                    android:visibility="invisible"
+                    android:visibility="gone"
                     tools:visibility="gone"/>
 
                 <ImageView
@@ -616,7 +616,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="1.0"
-                    android:visibility="invisible"
+                    android:visibility="gone"
                     tools:visibility="gone"/>
             </LinearLayout>
         </LinearLayout>

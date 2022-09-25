@@ -16,6 +16,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.RadioButton
 import android.widget.RadioGroup
+import android.widget.ScrollView
 import android.widget.Spinner
 import android.widget.TextView
 import android.widget.TimePicker
@@ -113,7 +114,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun generateQr() {
         val genQr: Button = binding.generateButton
+        val scrollDown: ScrollView = binding.rootLayout
         genQr.setOnClickListener {
+            println("hello")
             val qrResult: ImageView? = binding.QRResult
             val firstRadioGroup: RadioGroup = binding.firstQuestionRadio
             val secondRadioGroup: RadioGroup = binding.secondQuestionRadio
@@ -127,16 +130,23 @@ class MainActivity : AppCompatActivity() {
             thirdErrorText?.visibility = View.GONE
             if (firstRadioGroup.checkedRadioButtonId == -1) {
                 firstErrorText?.visibility = View.VISIBLE
+                qrResult?.visibility = View.GONE
             }
             if (secondRadioGroup.checkedRadioButtonId == -1) {
                 secondErrorText?.visibility = View.VISIBLE
+                qrResult?.visibility = View.GONE
             }
             if (studentId.text.length < 7) {
                 thirdErrorText?.visibility = View.VISIBLE
+                qrResult?.visibility = View.GONE
             }
 
             if (firstRadioGroup.checkedRadioButtonId != -1 && secondRadioGroup.checkedRadioButtonId != -1 && studentId.text.length == 7) {
                 qrResult?.visibility = View.VISIBLE
+            }
+
+            scrollDown.post{
+                scrollDown.fullScroll(View.FOCUS_DOWN)
             }
         }
     }
