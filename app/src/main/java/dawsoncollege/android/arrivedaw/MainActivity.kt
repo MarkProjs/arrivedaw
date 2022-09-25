@@ -85,7 +85,7 @@ class MainActivity : AppCompatActivity() {
                 ArrayAdapter(this, android.R.layout.simple_spinner_item, metroLine)
             metroLineSpinner.adapter = metroLineAdapter
         }
-        
+
         //Listener for showing the sub-forms
         subFormListener(metroRadio, landRadio, windowRadio)
 
