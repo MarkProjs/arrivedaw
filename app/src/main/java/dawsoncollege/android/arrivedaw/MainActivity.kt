@@ -10,6 +10,7 @@ import android.text.TextWatcher
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Button
+import android.widget.CheckBox
 import android.widget.DatePicker
 import android.widget.EditText
 import android.widget.ImageView
@@ -29,15 +30,6 @@ import com.google.zxing.common.BitMatrix
 import com.google.zxing.qrcode.QRCodeWriter
 import dawsoncollege.android.arrivedaw.databinding.ActivityMainBinding
 
-
-data class FirstOption(val reason: String, val entry: String, val metroLine: String, val metroNum: Editable, val arriveDate: String, val arriveTime: String, val studentNum: Editable){
-    override fun toString(): String {
-        return Gson().toJson(super.toString())
-    }
-}
-data class SecondOption(val reason: String, val entry: String, val wing: String, val arriveTime: String, val studentNum: String)
-data class ThirdOption(val reason: String, val entry: String, val roomNum: String, val requireLadder: String, val arriveDate: String, val studentNum: String)
-
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
@@ -47,7 +39,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //declaring all the variables
+        //declaring the variables
         val genQr: Button = binding.generateButton
         val qrResult: ImageView? = binding.QRResult
         val firstRadioGroup: RadioGroup = binding.firstQuestionRadio
@@ -67,9 +59,14 @@ class MainActivity : AppCompatActivity() {
         val metroDate: DatePicker = binding.metroDate
         val metroTime: TimePicker = binding.metroTime
 
-//        val qrTestString = "Hello this is a test string! It will be used to generate a QR code"
-//        binding.QRResult?.setImageBitmap(encodeStringToBitmap(qrTestString))
+        //variables for the second sub form
+        val dawsonWing: Spinner = binding.dawsonWings
+        val doorTime: TimePicker = binding.timeSubformDoor
 
+        //variables for the third sub-form
+        val roomNumber: EditText = binding.roomNumber
+        val requireLadder: CheckBox = binding.stairsCheckbox
+        val windowDate: DatePicker = binding.windowDate
 
         //setting up the dawson wing dropdown menu
         val dawsonWings = resources.getStringArray(R.array.dawson_wings)
@@ -88,7 +85,8 @@ class MainActivity : AppCompatActivity() {
                 ArrayAdapter(this, android.R.layout.simple_spinner_item, metroLine)
             metroLineSpinner.adapter = metroLineAdapter
         }
-        //Listener for showing the subforms
+        
+        //Listener for showing the sub-forms
         subFormListener(metroRadio, landRadio, windowRadio)
 
         //setting up the date pickers to be default to tomorrow
@@ -98,7 +96,7 @@ class MainActivity : AppCompatActivity() {
         windowDatePicker.minDate = System.currentTimeMillis() + 24*60*60*1000
 
 
-        //validate Qr button
+        //event listener for the qr button
         genQr.setOnClickListener {
             qrResult?.visibility = View.GONE
             firstErrorText?.visibility = View.GONE
@@ -117,26 +115,23 @@ class MainActivity : AppCompatActivity() {
             }
 
             if (firstRadioGroup.checkedRadioButtonId != -1 && secondRadioGroup.checkedRadioButtonId != -1 && studentId.text.length == 7) {
-                var rb1: RadioButton? = null;
-                var firstOption: FirstOption? = null;
-                firstRadioGroup.setOnCheckedChangeListener { _, checkedId ->
-                    rb1 = findViewById(checkedId)
-                }
-                metroRadio.setOnCheckedChangeListener { _, isChecked ->
-                    if (isChecked) {
-                        val dateMetro = "${metroDate.year}-${metroDate.month}-${metroDate.dayOfMonth}"
-                        val timeMetro = "${metroTime.hour}: ${metroTime.minute}"
-                        firstOption = FirstOption(
-                            rb1?.text as String,
-                            metroRadio.text as String,
-                            lineMetro.selectedItem as String,
-                            metroNumber.text ,
-                            dateMetro,
-                            timeMetro,
-                            studentId.text)
-                    }
-                }
-                binding.QRResult?.setImageBitmap(encodeStringToBitmap(firstOption.toString()))
+                //functions to generate QR code depending on the user's entry
+                modifyQrCode(
+                    firstRadioGroup,
+                    metroRadio,
+                    lineMetro,
+                    metroNumber,
+                    metroDate,
+                    metroTime,
+                    studentId,
+                    landRadio,
+                    dawsonWing,
+                    doorTime,
+                    windowRadio,
+                    roomNumber,
+                    requireLadder,
+                    windowDate
+                )
                 qrResult?.visibility = View.VISIBLE
             }
 
@@ -179,11 +174,54 @@ class MainActivity : AppCompatActivity() {
 
             }
         })
+    }
 
-        //generate the Qr image
+    private fun modifyQrCode(
+        firstRadioGroup: RadioGroup,
+        metroRadio: RadioButton,
+        lineMetro: Spinner,
+        metroNumber: EditText,
+        metroDate: DatePicker,
+        metroTime: TimePicker,
+        studentId: EditText,
+        landRadio: RadioButton,
+        dawsonWing: Spinner,
+        doorTime: TimePicker,
+        windowRadio: RadioButton,
+        roomNumber: EditText,
+        requireLadder: CheckBox,
+        windowDate: DatePicker
+    ) {
+        var rb1: RadioButton? = null;
+        var stringInput = ""
+        firstRadioGroup.setOnCheckedChangeListener { _, checkedId ->
+            rb1 = findViewById(checkedId)
+        }
+        if (metroRadio.isChecked) {
+            stringInput = "{reason: ${rb1?.text.toString()}," +
+                    "entry: ${metroRadio.text}," +
+                    "metroLine: ${lineMetro.selectedItem}," +
+                    "metroNumber: ${metroNumber.text}," +
+                    "arriveDate: $metroDate," +
+                    "arriveTime: $metroTime," +
+                    "studentId: ${studentId.text}}"
 
-
-
+        } else if (landRadio.isChecked) {
+            stringInput = "{reason: ${rb1?.text.toString()}," +
+                    "entry: ${landRadio.text}," +
+                    "wing: ${dawsonWing.selectedItem}," +
+                    "arriveTime: $doorTime," +
+                    "studentId: ${studentId.text}}"
+        } else if (windowRadio.isChecked) {
+            stringInput = "{reason: ${rb1?.text.toString()}," +
+                    "entry: ${windowRadio.text}," +
+                    "roomNumber: ${roomNumber.text}," +
+                    "requireLadder: ${requireLadder.isChecked}," +
+                    "arriveDate: $windowDate," +
+                    "studentId: ${studentId.text}}"
+        }
+        val stringFormat = Gson().toJson((stringInput))
+        binding.QRResult?.setImageBitmap(encodeStringToBitmap(stringFormat))
     }
     private fun subFormListener(
         metroRadio: RadioButton,
