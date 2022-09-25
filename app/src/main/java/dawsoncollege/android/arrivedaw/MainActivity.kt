@@ -151,6 +151,10 @@ class MainActivity : AppCompatActivity() {
                 metroError?.visibility = View.GONE
                  if (s.isNullOrEmpty() || s.startsWith('0')) {
                     metroError?.visibility = View.VISIBLE
+                     genQr.visibility = View.GONE
+                }
+                else {
+                     genQr.visibility = View.VISIBLE
                 }
             }
         })
@@ -163,19 +167,24 @@ class MainActivity : AppCompatActivity() {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 roomError?.visibility = View.GONE
-                if (s != null) {
-                    if (!s.matches("[1-8][A-H][1-9][0-9]?".toRegex())){
-                        roomError?.visibility = View.VISIBLE
-                    }
-                }
-                if (s.isNullOrEmpty()) {
+
+                if (s != null && !s.matches("[1-8][A-H][1-9][0-9]?".toRegex())) {
                     roomError?.visibility = View.VISIBLE
+                    genQr.visibility = View.GONE
+                }
+                else if (s.isNullOrEmpty()) {
+                    roomError?.visibility = View.VISIBLE
+                    genQr.visibility = View.GONE
+                }
+                else {
+                    genQr.visibility = View.VISIBLE
                 }
 
             }
         })
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
     private fun modifyQrCode(
         firstRadioGroup: RadioGroup,
         metroRadio: RadioButton,
@@ -192,32 +201,35 @@ class MainActivity : AppCompatActivity() {
         requireLadder: CheckBox,
         windowDate: DatePicker
     ) {
-        var rb1: RadioButton? = null;
+        val radioButtonID = firstRadioGroup.checkedRadioButtonId
+        var rb1: RadioButton  = firstRadioGroup.findViewById(radioButtonID);
         var stringInput = ""
-        firstRadioGroup.setOnCheckedChangeListener { _, checkedId ->
-            rb1 = findViewById(checkedId)
-        }
+
         if (metroRadio.isChecked) {
-            stringInput = "{reason: ${rb1?.text.toString()}," +
+            val dateMetro = "${metroDate.year} - ${metroDate.month} - ${metroDate.dayOfMonth}"
+            val timeMetro = "${metroTime.hour}: ${metroTime.minute}"
+            stringInput = "{reason: ${rb1.text}," +
                     "entry: ${metroRadio.text}," +
                     "metroLine: ${lineMetro.selectedItem}," +
                     "metroNumber: ${metroNumber.text}," +
-                    "arriveDate: $metroDate," +
-                    "arriveTime: $metroTime," +
+                    "arriveDate: $dateMetro," +
+                    "arriveTime: ${timeMetro}," +
                     "studentId: ${studentId.text}}"
 
         } else if (landRadio.isChecked) {
-            stringInput = "{reason: ${rb1?.text.toString()}," +
+            val timeDoor = "${doorTime.hour}: ${doorTime.minute}"
+            stringInput = "{reason: ${rb1.text}," +
                     "entry: ${landRadio.text}," +
                     "wing: ${dawsonWing.selectedItem}," +
-                    "arriveTime: $doorTime," +
+                    "arriveTime: $timeDoor," +
                     "studentId: ${studentId.text}}"
         } else if (windowRadio.isChecked) {
-            stringInput = "{reason: ${rb1?.text.toString()}," +
+            val dateWindow = "${windowDate.year} - ${windowDate.month} - ${windowDate.dayOfMonth}"
+            stringInput = "{reason: ${rb1.text}," +
                     "entry: ${windowRadio.text}," +
                     "roomNumber: ${roomNumber.text}," +
                     "requireLadder: ${requireLadder.isChecked}," +
-                    "arriveDate: $windowDate," +
+                    "arriveDate: $dateWindow," +
                     "studentId: ${studentId.text}}"
         }
         val stringFormat = Gson().toJson((stringInput))
