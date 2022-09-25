@@ -2,7 +2,7 @@ package dawsoncollege.android.arrivedaw
 
 import android.graphics.Bitmap
 import android.graphics.Color
-import android.icu.util.Calendar
+import android.os.Build
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -18,24 +18,54 @@ import android.widget.RadioGroup
 import android.widget.Spinner
 import android.widget.TextView
 import android.widget.TimePicker
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import com.google.gson.Gson
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.WriterException
 import com.google.zxing.common.BitMatrix
 import com.google.zxing.qrcode.QRCodeWriter
 import dawsoncollege.android.arrivedaw.databinding.ActivityMainBinding
-import org.w3c.dom.Text
+
+
+data class FirstOption(val reason: String, val entry: String, val metroLine: String, val metroNum: Editable, val arriveDate: String, val arriveTime: String, val studentNum: Editable){
+    override fun toString(): String {
+        return Gson().toJson(super.toString())
+    }
+}
+data class SecondOption(val reason: String, val entry: String, val wing: String, val arriveTime: String, val studentNum: String)
+data class ThirdOption(val reason: String, val entry: String, val roomNum: String, val requireLadder: String, val arriveDate: String, val studentNum: String)
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val qrTestString = "Hello this is a test string! It will be used to generate a QR code"
-        binding.QRResult?.setImageBitmap(encodeStringToBitmap(qrTestString))
+        //declaring all the variables
+        val genQr: Button = binding.generateButton
+        val qrResult: ImageView? = binding.QRResult
+        val firstRadioGroup: RadioGroup = binding.firstQuestionRadio
+        val secondRadioGroup: RadioGroup = binding.secondQuestionRadio
+        val studentId: EditText = binding.studentNumber
+        val firstErrorText: TextView? = binding.errorFirstQuestion
+        val secondErrorText: TextView? = binding.errorSecondQuestion
+        val thirdErrorText: TextView? = binding.errorThirdQuestion
+        val metroRadio: RadioButton = binding.entryByMetro
+        val landRadio: RadioButton = binding.entryByLand
+        val windowRadio: RadioButton = binding.entryByWindow
+
+        //variables for the first sub-form
+        val lineMetro: Spinner = binding.metroSpinner
+        val metroNumber: EditText = binding.metroText
+        val metroDate: DatePicker = binding.metroDate
+        val metroTime: TimePicker = binding.metroTime
+
+//        val qrTestString = "Hello this is a test string! It will be used to generate a QR code"
+//        binding.QRResult?.setImageBitmap(encodeStringToBitmap(qrTestString))
 
 
         //setting up the dawson wing dropdown menu
@@ -56,18 +86,60 @@ class MainActivity : AppCompatActivity() {
             metroLineSpinner.adapter = metroLineAdapter
         }
         //Listener for showing the subforms
-        subFormListener();
+        subFormListener(metroRadio, landRadio, windowRadio)
 
         //setting up the date pickers to be default to tomorrow
         val metroDatePicker: DatePicker = binding.metroDate
         val windowDatePicker: DatePicker = binding.windowDate
         metroDatePicker.minDate = System.currentTimeMillis() + 24*60*60*1000
         windowDatePicker.minDate = System.currentTimeMillis() + 24*60*60*1000
-        //event listener for the generate qr button
-        generateQr()
+
+
+        //validate Qr button
+        genQr.setOnClickListener {
+            qrResult?.visibility = View.GONE
+            firstErrorText?.visibility = View.GONE
+            secondErrorText?.visibility = View.GONE
+            thirdErrorText?.visibility = View.GONE
+
+
+            if (firstRadioGroup.checkedRadioButtonId == -1) {
+                firstErrorText?.visibility = View.VISIBLE
+            }
+            if (secondRadioGroup.checkedRadioButtonId == -1) {
+                secondErrorText?.visibility = View.VISIBLE
+            }
+            if (studentId.text.length < 7) {
+                thirdErrorText?.visibility = View.VISIBLE
+            }
+
+            if (firstRadioGroup.checkedRadioButtonId != -1 && secondRadioGroup.checkedRadioButtonId != -1 && studentId.text.length == 7) {
+                var rb1: RadioButton? = null;
+                var firstOption: FirstOption? = null;
+                firstRadioGroup.setOnCheckedChangeListener { _, checkedId ->
+                    rb1 = findViewById(checkedId)
+                }
+                metroRadio.setOnCheckedChangeListener { _, isChecked ->
+                    if (isChecked) {
+                        val dateMetro = "${metroDate.year}-${metroDate.month}-${metroDate.dayOfMonth}"
+                        val timeMetro = "${metroTime.hour}: ${metroTime.minute}"
+                        firstOption = FirstOption(
+                            rb1?.text as String,
+                            metroRadio.text as String,
+                            lineMetro.selectedItem as String,
+                            metroNumber.text ,
+                            dateMetro,
+                            timeMetro,
+                            studentId.text)
+                    }
+                }
+                binding.QRResult?.setImageBitmap(encodeStringToBitmap(firstOption.toString()))
+                qrResult?.visibility = View.VISIBLE
+            }
+        }
 
         //event listener for the number of metro
-        val metroNumber: EditText = binding.metroText
+
         metroNumber.addTextChangedListener(object : TextWatcher {
             val metroError: TextView? = binding.metroNumberError
             override fun afterTextChanged(p0: Editable?) {}
@@ -100,42 +172,18 @@ class MainActivity : AppCompatActivity() {
 
             }
         })
+
+        //generate the Qr image
+
+
+
     }
 
-    private fun generateQr() {
-        val genQr: Button = binding.generateButton
-        genQr.setOnClickListener {
-            val qrResult: ImageView? = binding.QRResult
-            val firstRadioGroup: RadioGroup = binding.firstQuestionRadio
-            val secondRadioGroup: RadioGroup = binding.secondQuestionRadio
-            val studentId: EditText = binding.studentNumber
-            val firstErrorText: TextView? = binding.errorFirstQuestion
-            val secondErrorText: TextView? = binding.errorSecondQuestion
-            val thirdErrorText: TextView? = binding.errorThirdQuestion
-            qrResult?.visibility = View.GONE
-            firstErrorText?.visibility = View.GONE
-            secondErrorText?.visibility = View.GONE
-            thirdErrorText?.visibility = View.GONE
-            if (firstRadioGroup.checkedRadioButtonId == -1) {
-                firstErrorText?.visibility = View.VISIBLE
-            }
-            if (secondRadioGroup.checkedRadioButtonId == -1) {
-                secondErrorText?.visibility = View.VISIBLE
-            }
-            if (studentId.text.length < 7) {
-                thirdErrorText?.visibility = View.VISIBLE
-            }
-
-            if (firstRadioGroup.checkedRadioButtonId != -1 && secondRadioGroup.checkedRadioButtonId != -1 && studentId.text.length == 7) {
-                qrResult?.visibility = View.VISIBLE
-            }
-        }
-    }
-
-    private fun subFormListener() {
-        val metroRadio: RadioButton = binding.entryByMetro
-        val landRadio: RadioButton = binding.entryByLand
-        val windowRadio: RadioButton = binding.entryByWindow
+    private fun subFormListener(
+        metroRadio: RadioButton,
+        landRadio: RadioButton,
+        windowRadio: RadioButton
+    ) {
         val metroLayout: LinearLayout = binding.subformMetro
         val landLayout: LinearLayout = binding.subformDoors
         val windowLayout: LinearLayout = binding.subformWindow
@@ -158,7 +206,10 @@ class MainActivity : AppCompatActivity() {
             windowLayout.visibility = View.VISIBLE
         }
     }
+
 }
+
+
 
     @Throws(WriterException::class)
     fun encodeStringToBitmap(str: String): Bitmap {
