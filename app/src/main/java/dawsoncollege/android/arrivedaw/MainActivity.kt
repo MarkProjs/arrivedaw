@@ -59,6 +59,7 @@ class MainActivity : AppCompatActivity() {
         val metroRadio: RadioButton = binding.entryByMetro
         val landRadio: RadioButton = binding.entryByLand
         val windowRadio: RadioButton = binding.entryByWindow
+        val scrollDown: ScrollView = binding.rootLayout
 
         //variables for the first sub-form
         val lineMetro: Spinner = binding.metroSpinner
@@ -137,6 +138,10 @@ class MainActivity : AppCompatActivity() {
                 }
                 binding.QRResult?.setImageBitmap(encodeStringToBitmap(firstOption.toString()))
                 qrResult?.visibility = View.VISIBLE
+            }
+
+            scrollDown.post{
+                scrollDown.fullScroll(View.FOCUS_DOWN)
             }
         }
 
