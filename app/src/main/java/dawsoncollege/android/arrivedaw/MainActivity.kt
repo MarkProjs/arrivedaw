@@ -4,6 +4,7 @@ import android.graphics.Bitmap
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
@@ -15,6 +16,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.RadioButton
 import android.widget.RadioGroup
+import android.widget.ScrollView
 import android.widget.Spinner
 import android.widget.TextView
 import android.widget.TimePicker
@@ -57,6 +59,7 @@ class MainActivity : AppCompatActivity() {
         val metroRadio: RadioButton = binding.entryByMetro
         val landRadio: RadioButton = binding.entryByLand
         val windowRadio: RadioButton = binding.entryByWindow
+        val scrollDown: ScrollView = binding.rootLayout
 
         //variables for the first sub-form
         val lineMetro: Spinner = binding.metroSpinner
@@ -136,6 +139,10 @@ class MainActivity : AppCompatActivity() {
                 binding.QRResult?.setImageBitmap(encodeStringToBitmap(firstOption.toString()))
                 qrResult?.visibility = View.VISIBLE
             }
+
+            scrollDown.post{
+                scrollDown.fullScroll(View.FOCUS_DOWN)
+            }
         }
 
         //event listener for the number of metro
@@ -178,7 +185,6 @@ class MainActivity : AppCompatActivity() {
 
 
     }
-
     private fun subFormListener(
         metroRadio: RadioButton,
         landRadio: RadioButton,

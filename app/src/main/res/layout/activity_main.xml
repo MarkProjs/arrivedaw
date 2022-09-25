@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,7 +9,7 @@
 
     <ScrollView
         android:id="@+id/root_layout"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -19,7 +20,7 @@
 
         <LinearLayout
             android:id="@+id/main_linear"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:orientation="vertical"
@@ -29,13 +30,13 @@
 
             <LinearLayout
                 android:id="@+id/desc_layout"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/app_description_id"
-                    android:layout_width="366dp"
+                    android:layout_width="match_parent"
                     android:layout_height="125dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="12dp"
@@ -50,7 +51,7 @@
 
                 <TextView
                     android:id="@+id/unspecified_id"
-                    android:layout_width="365dp"
+                    android:layout_width="match_parent"
                     android:layout_height="43dp"
                     android:layout_marginTop="8dp"
                     android:text="@string/unspecified"
@@ -61,7 +62,7 @@
 
                 <TextView
                     android:id="@+id/fillForm_id"
-                    android:layout_width="362dp"
+                    android:layout_width="match_parent"
                     android:layout_height="62dp"
                     android:layout_marginTop="4dp"
                     android:text="@string/fillForm"
@@ -84,7 +85,7 @@
 
                 <LinearLayout
                     android:id="@+id/question1"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
@@ -108,7 +109,7 @@
 
                 <RadioGroup
                     android:id="@+id/first_question_radio"
-                    android:layout_width="296dp"
+                    android:layout_width="match_parent"
                     android:layout_height="257dp"
                     android:layout_marginStart="44dp"
                     android:layout_marginTop="8dp"
@@ -118,31 +119,31 @@
 
                     <RadioButton
                         android:id="@+id/Registered"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/Registered_student" />
 
                     <RadioButton
                         android:id="@+id/Work"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/Work" />
 
                     <RadioButton
                         android:id="@+id/friend"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/visit_friend" />
 
                     <RadioButton
                         android:id="@+id/college"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/visit_college" />
 
                     <RadioButton
                         android:id="@+id/other"
-                        android:layout_width="92dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/other" />
                 </RadioGroup>
@@ -150,27 +151,27 @@
 
             <LinearLayout
                 android:id="@+id/second_question_layout"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="30dp"
                 android:orientation="vertical">
 
                 <LinearLayout
                     android:id="@+id/question2"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <ImageView
                         android:id="@+id/icon_sign_post"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="17dp"
+                        android:layout_marginTop="12dp"
                         android:importantForAccessibility="no"
                         app:srcCompat="@drawable/ic_baseline_signpost_24" />
 
                     <TextView
                         android:id="@+id/entrance_question"
-                        android:layout_width="321dp"
+                        android:layout_width="match_parent"
                         android:layout_height="36dp"
                         android:layout_marginStart="12dp"
                         android:layout_marginTop="13dp"
@@ -180,7 +181,7 @@
 
                 <RadioGroup
                     android:id="@+id/second_question_radio"
-                    android:layout_width="204dp"
+                    android:layout_width="match_parent"
                     android:layout_height="123dp"
                     android:layout_marginStart="48dp"
                     android:layout_marginTop="4dp"
@@ -189,21 +190,21 @@
 
                     <RadioButton
                         android:id="@+id/entry_by_metro"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:onClick="onRadioButtonClicked"
                         android:text="Entry by metro" />
 
                     <RadioButton
                         android:id="@+id/entry_by_land"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:onClick="onRadioButtonClicked"
                         android:text="Entry by land (the doors)" />
 
                     <RadioButton
                         android:id="@+id/entry_by_window"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:onClick="onRadioButtonClicked"
                         android:text="Entry by window" />
@@ -218,14 +219,14 @@
 
                 <LinearLayout
                     android:id="@+id/subform_metro"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:visibility="gone"
                     tools:visibility="gone">
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
@@ -243,7 +244,7 @@
 
                         <Spinner
                             android:id="@+id/metro_spinner"
-                            android:layout_width="wrap_content"
+                            android:layout_width="150dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="25dp"
                             android:spinnerMode="dropdown">
@@ -252,7 +253,7 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="23dp"
                         android:orientation="horizontal">
@@ -290,13 +291,13 @@
                         tools:visibility="visible"/>
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="23dp"
                         android:orientation="vertical">
 
                         <LinearLayout
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">
 
@@ -315,7 +316,7 @@
 
                         <DatePicker
                             android:id="@+id/metro_date"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="30dp"
                             android:calendarViewShown="false"
@@ -326,13 +327,13 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="23dp"
                         android:orientation="vertical">
 
                         <LinearLayout
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">
 
@@ -361,10 +362,11 @@
 
                 <LinearLayout
                     android:id="@+id/subform_doors"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:visibility="gone">
+                    android:visibility="gone"
+                    tools:visibility="gone">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -394,12 +396,12 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
 
                         <LinearLayout
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">
 
@@ -432,7 +434,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:visibility="gone"
-                    tools:visibility="gone">
+                    tools:visibility="visible">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -461,7 +463,7 @@
 
                     <TextView
                         android:id="@+id/room_number_error"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/room_number_error"
                         android:textColor="@android:color/holo_red_dark"
@@ -498,13 +500,13 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="23dp"
                         android:orientation="vertical">
 
                         <LinearLayout
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">
 
@@ -522,7 +524,7 @@
 
                         <DatePicker
                             android:id="@+id/window_date"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="30dp"
                             android:calendarViewShown="false"
@@ -536,7 +538,7 @@
 
             <LinearLayout
                 android:id="@+id/third_question_layout"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 app:layout_constraintTop_toBottomOf="@id/second_question_layout">
@@ -583,7 +585,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="@android:color/holo_red_dark"
                     android:text="Must provide an entry reason"
-                    android:visibility="invisible"
+                    android:visibility="gone"
                     tools:visibility="gone"/>
                 <TextView
                     android:id="@+id/error_second_question"
@@ -591,15 +593,15 @@
                     android:layout_height="wrap_content"
                     android:textColor="@android:color/holo_red_dark"
                     android:text="Must provide an entry method"
-                    android:visibility="invisible"
+                    android:visibility="gone"
                     tools:visibility="gone"/>
                 <TextView
                     android:id="@+id/error_third_question"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@android:color/holo_red_dark"
-                    android:text="Must provide a student number"
-                    android:visibility="invisible"
+                    android:text="Must provide a valid student number (Must be 7 characters)"
+                    android:visibility="gone"
                     tools:visibility="gone"/>
 
                 <ImageView
@@ -615,7 +617,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="1.0"
-                    android:visibility="invisible"
+                    android:visibility="gone"
                     tools:visibility="gone"/>
             </LinearLayout>
         </LinearLayout>
