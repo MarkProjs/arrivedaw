@@ -64,9 +64,13 @@ class MainActivity : AppCompatActivity() {
         val doorTime: TimePicker = binding.timeSubformDoor
 
         //variables for the third sub-form
-        val roomNumber: EditText = binding.roomNumber
+        val wingRoom: EditText = binding.roomNumber
         val requireLadder: CheckBox = binding.stairsCheckbox
         val windowDate: DatePicker = binding.windowDate
+
+        //Real-time error messages
+        val metroError: TextView? = binding.metroNumberError
+        val roomError : TextView? = binding.roomNumberError
 
         //setting up the dawson wing dropdown menu
         val dawsonWings = resources.getStringArray(R.array.dawson_wings)
@@ -87,7 +91,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         //Listener for showing the sub-forms
-        subFormListener(metroRadio, landRadio, windowRadio)
+        if (roomError != null && metroError != null) {
+            subFormListener(genQr, metroError, roomError , metroRadio, landRadio, windowRadio)
+        }
 
         //setting up the date pickers to be default to tomorrow
         val metroDatePicker: DatePicker = binding.metroDate
@@ -128,7 +134,7 @@ class MainActivity : AppCompatActivity() {
                     dawsonWing,
                     doorTime,
                     windowRadio,
-                    roomNumber,
+                    wingRoom,
                     requireLadder,
                     windowDate
                 )
@@ -141,9 +147,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         //event listener for the number of metro
-
         metroNumber.addTextChangedListener(object : TextWatcher {
-            val metroError: TextView? = binding.metroNumberError
+
             override fun afterTextChanged(p0: Editable?) {}
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
             }
@@ -160,9 +165,8 @@ class MainActivity : AppCompatActivity() {
         })
 
         //event listener for the wing room
-        val wingRoom: EditText = binding.roomNumber
         wingRoom.addTextChangedListener(object : TextWatcher {
-            val roomError : TextView? = binding.roomNumberError
+
             override fun afterTextChanged(p0: Editable?) {}
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
@@ -197,7 +201,7 @@ class MainActivity : AppCompatActivity() {
         dawsonWing: Spinner,
         doorTime: TimePicker,
         windowRadio: RadioButton,
-        roomNumber: EditText,
+        wingRoom: EditText,
         requireLadder: CheckBox,
         windowDate: DatePicker
     ) {
@@ -227,7 +231,7 @@ class MainActivity : AppCompatActivity() {
             val dateWindow = "${windowDate.year} - ${windowDate.month} - ${windowDate.dayOfMonth}"
             stringInput = "{reason: ${rb1.text}," +
                     "entry: ${windowRadio.text}," +
-                    "roomNumber: ${roomNumber.text}," +
+                    "roomNumber: ${wingRoom.text}," +
                     "requireLadder: ${requireLadder.isChecked}," +
                     "arriveDate: $dateWindow," +
                     "studentId: ${studentId.text}}"
@@ -236,6 +240,9 @@ class MainActivity : AppCompatActivity() {
         binding.QRResult?.setImageBitmap(encodeStringToBitmap(stringFormat))
     }
     private fun subFormListener(
+        genQr: Button,
+        metroError: TextView,
+        roomError: TextView,
         metroRadio: RadioButton,
         landRadio: RadioButton,
         windowRadio: RadioButton
@@ -244,22 +251,31 @@ class MainActivity : AppCompatActivity() {
         val landLayout: LinearLayout = binding.subformDoors
         val windowLayout: LinearLayout = binding.subformWindow
         metroRadio.setOnClickListener {
+            metroError.visibility = View.GONE
+            roomError.visibility = View.GONE
             metroLayout.visibility = View.VISIBLE
             landLayout.visibility = View.GONE
             windowLayout.visibility = View.GONE
+            genQr.visibility = View.VISIBLE
         }
 
         landRadio.setOnClickListener {
+            metroError.visibility = View.GONE
+            roomError.visibility = View.GONE
             metroLayout.visibility = View.GONE
             landLayout.visibility = View.VISIBLE
             windowLayout.visibility = View.GONE
+            genQr.visibility = View.VISIBLE
 
         }
 
         windowRadio.setOnClickListener {
+            metroError.visibility = View.GONE
+            roomError.visibility = View.GONE
             metroLayout.visibility = View.GONE
             landLayout.visibility = View.GONE
             windowLayout.visibility = View.VISIBLE
+            genQr.visibility = View.VISIBLE
         }
     }
 
