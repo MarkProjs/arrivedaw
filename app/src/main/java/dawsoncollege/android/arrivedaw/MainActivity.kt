@@ -29,7 +29,6 @@ import com.google.zxing.WriterException
 import com.google.zxing.common.BitMatrix
 import com.google.zxing.qrcode.QRCodeWriter
 import dawsoncollege.android.arrivedaw.databinding.ActivityMainBinding
-
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
