@@ -29,6 +29,18 @@ import com.google.zxing.WriterException
 import com.google.zxing.common.BitMatrix
 import com.google.zxing.qrcode.QRCodeWriter
 import dawsoncollege.android.arrivedaw.databinding.ActivityMainBinding
+//data class for the metro data
+data class MetroData(val rb1: RadioButton, val metroRadio: RadioButton, val lineMetro: Spinner,
+                     val metroNumber: EditText, val dateMetro: String, val timeMetro: String,
+                    val studentId: EditText)
+//data class for the door data
+data class DoorData(val rb1: RadioButton, val landRadio: RadioButton, val dawsonWing: Spinner,
+val timeDoor: String, val studentId: EditText)
+
+//data class for the window data
+data class WindowData(val rb1: RadioButton, val windowRadio: RadioButton, val wingRoom: EditText,
+val requireLadder: CheckBox, val dateWindow: String, val studentId: EditText)
+
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -212,31 +224,21 @@ class MainActivity : AppCompatActivity() {
         if (metroRadio.isChecked) {
             val dateMetro = "${metroDate.year} - ${metroDate.month + 1} - ${metroDate.dayOfMonth}"
             val timeMetro = "${metroTime.hour}: ${metroTime.minute}"
-            stringInput = "{reason: ${rb1.text}," +
-                    "entry: ${metroRadio.text}," +
-                    "metroLine: ${lineMetro.selectedItem}," +
-                    "metroNumber: ${metroNumber.text}," +
-                    "arriveDate: $dateMetro," +
-                    "arriveTime: ${timeMetro}," +
-                    "studentId: ${studentId.text}}"
+            val metroData = MetroData(rb1, metroRadio, lineMetro, metroNumber, dateMetro,
+                timeMetro, studentId)
+            stringInput = metroData.toString()
 
         } else if (landRadio.isChecked) {
             val timeDoor = "${doorTime.hour}: ${doorTime.minute}"
-            stringInput = "{reason: ${rb1.text}," +
-                    "entry: ${landRadio.text}," +
-                    "wing: ${dawsonWing.selectedItem}," +
-                    "arriveTime: $timeDoor," +
-                    "studentId: ${studentId.text}}"
+            val doorData = DoorData(rb1, landRadio, dawsonWing, timeDoor, studentId)
+            stringInput =  doorData.toString()
         } else if (windowRadio.isChecked) {
             val dateWindow = "${windowDate.year} - ${windowDate.month + 1} - ${windowDate.dayOfMonth}"
-            stringInput = "{reason: ${rb1.text}," +
-                    "entry: ${windowRadio.text}," +
-                    "roomNumber: ${wingRoom.text}," +
-                    "requireLadder: ${requireLadder.isChecked}," +
-                    "arriveDate: $dateWindow," +
-                    "studentId: ${studentId.text}}"
+            val windowData = WindowData(rb1, windowRadio, wingRoom, requireLadder, dateWindow, studentId)
+            stringInput = windowData.toString()
         }
-        val stringFormat = Gson().toJson((stringInput))
+        val gson = Gson()
+        val stringFormat = gson.toJson((stringInput))
         binding.QRResult?.setImageBitmap(encodeStringToBitmap(stringFormat))
     }
     private fun subFormListener(
