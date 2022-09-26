@@ -4,7 +4,6 @@ import android.graphics.Bitmap
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
@@ -30,16 +29,22 @@ import com.google.zxing.common.BitMatrix
 import com.google.zxing.qrcode.QRCodeWriter
 import dawsoncollege.android.arrivedaw.databinding.ActivityMainBinding
 //data class for the metro data
-data class MetroData(val rb1: RadioButton, val metroRadio: RadioButton, val lineMetro: Spinner,
-                     val metroNumber: EditText, val dateMetro: String, val timeMetro: String,
-                    val studentId: EditText)
+data class MetroData(
+    val rb1: String, val metroRadio: String, val lineMetro: String,
+    val metroNumber: String, val dateMetro: String, val timeMetro: String,
+    val studentId: String
+)
 //data class for the door data
-data class DoorData(val rb1: RadioButton, val landRadio: RadioButton, val dawsonWing: Spinner,
-val timeDoor: String, val studentId: EditText)
+data class DoorData(
+    val rb1: String, val landRadio: String, val dawsonWing: String,
+    val timeDoor: String, val studentId: String
+)
 
 //data class for the window data
-data class WindowData(val rb1: RadioButton, val windowRadio: RadioButton, val wingRoom: EditText,
-val requireLadder: CheckBox, val dateWindow: String, val studentId: EditText)
+data class WindowData(
+    val rb1: String, val windowRadio: String, val wingRoom: String,
+    val requireLadder: Boolean, val dateWindow: String, val studentId: String
+)
 
 
 class MainActivity : AppCompatActivity() {
@@ -224,17 +229,20 @@ class MainActivity : AppCompatActivity() {
         if (metroRadio.isChecked) {
             val dateMetro = "${metroDate.year} - ${metroDate.month + 1} - ${metroDate.dayOfMonth}"
             val timeMetro = "${metroTime.hour}: ${metroTime.minute}"
-            val metroData = MetroData(rb1, metroRadio, lineMetro, metroNumber, dateMetro,
-                timeMetro, studentId)
+            val metroData = MetroData(rb1.text.toString(), metroRadio.text.toString(), lineMetro.selectedItem.toString(),
+                metroNumber.text.toString(), dateMetro,
+                timeMetro, studentId.text.toString())
             stringInput = metroData.toString()
 
         } else if (landRadio.isChecked) {
             val timeDoor = "${doorTime.hour}: ${doorTime.minute}"
-            val doorData = DoorData(rb1, landRadio, dawsonWing, timeDoor, studentId)
+            val doorData = DoorData(rb1.text.toString(), landRadio.text.toString(),
+                dawsonWing.selectedItem.toString(), timeDoor, studentId.text.toString())
             stringInput =  doorData.toString()
         } else if (windowRadio.isChecked) {
             val dateWindow = "${windowDate.year} - ${windowDate.month + 1} - ${windowDate.dayOfMonth}"
-            val windowData = WindowData(rb1, windowRadio, wingRoom, requireLadder, dateWindow, studentId)
+            val windowData = WindowData(rb1.text.toString(), windowRadio.text.toString(), wingRoom.text.toString(),
+                requireLadder.isChecked, dateWindow, studentId.text.toString())
             stringInput = windowData.toString()
         }
         val gson = Gson()
